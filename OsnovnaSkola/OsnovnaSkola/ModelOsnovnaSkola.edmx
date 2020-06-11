@@ -1,0 +1,1281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ModelOsnovnaSkola.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ModelOsnovnaSkolaStoreContainer">
+    <EntitySet Name="Zaposlenici" EntityType="ModelOsnovnaSkola.Store.Zaposlenici" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Kontrolna_tacka" EntityType="ModelOsnovnaSkola.Store.Kontrolna_tacka" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Predavanja" EntityType="ModelOsnovnaSkola.Store.Predavanja" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Oblasti" EntityType="ModelOsnovnaSkola.Store.Oblasti" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cas" EntityType="ModelOsnovnaSkola.Store.Cas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Predmeti" EntityType="ModelOsnovnaSkola.Store.Predmeti" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Odeljenja" EntityType="ModelOsnovnaSkola.Store.Odeljenja" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Ucenici" EntityType="ModelOsnovnaSkola.Store.Ucenici" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="KontrolnaTackaCasovi" EntityType="ModelOsnovnaSkola.Store.KontrolnaTackaCasovi" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Imaju" EntityType="ModelOsnovnaSkola.Store.Imaju" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Prisustva" EntityType="ModelOsnovnaSkola.Store.Prisustva" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Rade" EntityType="ModelOsnovnaSkola.Store.Rade" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NastavnikOdeljenjes" EntityType="ModelOsnovnaSkola.Store.NastavnikOdeljenjes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Zaposlenici_Nastavnik" EntityType="ModelOsnovnaSkola.Store.Zaposlenici_Nastavnik" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Zaposlenici_Ucitelj" EntityType="ModelOsnovnaSkola.Store.Zaposlenici_Ucitelj" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Kontrolna_tacka_Domaci" EntityType="ModelOsnovnaSkola.Store.Kontrolna_tacka_Domaci" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Kontrolna_tacka_Kontrolni" EntityType="ModelOsnovnaSkola.Store.Kontrolna_tacka_Kontrolni" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="Zadaje" Association="ModelOsnovnaSkola.Store.Zadaje">
+      <End Role="Zaposleni" EntitySet="Zaposlenici" />
+      <End Role="Kontrolna_tacka" EntitySet="Kontrolna_tacka" />
+    </AssociationSet>
+    <AssociationSet Name="Vezana" Association="ModelOsnovnaSkola.Store.Vezana">
+      <End Role="Predavanje" EntitySet="Predavanja" />
+      <End Role="Oblast" EntitySet="Oblasti" />
+    </AssociationSet>
+    <AssociationSet Name="Sadrzi" Association="ModelOsnovnaSkola.Store.PredmetOblast">
+      <End Role="Predmet" EntitySet="Predmeti" />
+      <End Role="Oblast" EntitySet="Oblasti" />
+    </AssociationSet>
+    <AssociationSet Name="Pripada" Association="ModelOsnovnaSkola.Store.Pripada">
+      <End Role="Odeljenje" EntitySet="Odeljenja" />
+      <End Role="Ucenik" EntitySet="Ucenici" />
+    </AssociationSet>
+    <AssociationSet Name="Predjena" Association="ModelOsnovnaSkola.Store.Predjena">
+      <End Role="Oblast" EntitySet="Oblasti" />
+      <End Role="Cas" EntitySet="Cas" />
+    </AssociationSet>
+    <AssociationSet Name="Kontrolna_tackaOdrzava" Association="ModelOsnovnaSkola.Store.Kontrolna_tackaOdrzava">
+      <End Role="Kontrolna_tacka" EntitySet="Kontrolna_tacka" />
+      <End Role="KontrolnaTackaCas" EntitySet="KontrolnaTackaCasovi" />
+    </AssociationSet>
+    <AssociationSet Name="CasOdrzava" Association="ModelOsnovnaSkola.Store.CasOdrzava">
+      <End Role="Cas" EntitySet="Cas" />
+      <End Role="KontrolnaTackaCas" EntitySet="KontrolnaTackaCasovi" />
+    </AssociationSet>
+    <AssociationSet Name="OdeljenjeIma" Association="ModelOsnovnaSkola.Store.OdeljenjeIma">
+      <End Role="Odeljenje" EntitySet="Odeljenja" />
+      <End Role="Ima" EntitySet="Imaju" />
+    </AssociationSet>
+    <AssociationSet Name="CasIma" Association="ModelOsnovnaSkola.Store.CasIma">
+      <End Role="Cas" EntitySet="Cas" />
+      <End Role="Ima" EntitySet="Imaju" />
+    </AssociationSet>
+    <AssociationSet Name="UcenikPrisustvo" Association="ModelOsnovnaSkola.Store.UcenikPrisustvo">
+      <End Role="Ucenik" EntitySet="Ucenici" />
+      <End Role="Prisustvo" EntitySet="Prisustva" />
+    </AssociationSet>
+    <AssociationSet Name="CasPrisustvo" Association="ModelOsnovnaSkola.Store.CasPrisustvo">
+      <End Role="Cas" EntitySet="Cas" />
+      <End Role="Prisustvo" EntitySet="Prisustva" />
+    </AssociationSet>
+    <AssociationSet Name="Kontrolna_tackaRadi" Association="ModelOsnovnaSkola.Store.Kontrolna_tackaRadi">
+      <End Role="Kontrolna_tacka" EntitySet="Kontrolna_tacka" />
+      <End Role="Radi" EntitySet="Rade" />
+    </AssociationSet>
+    <AssociationSet Name="UcenikRadi" Association="ModelOsnovnaSkola.Store.UcenikRadi">
+      <End Role="Ucenik" EntitySet="Ucenici" />
+      <End Role="Radi" EntitySet="Rade" />
+    </AssociationSet>
+    <AssociationSet Name="Drzi" Association="ModelOsnovnaSkola.Store.Drzi">
+      <End Role="Zaposleni" EntitySet="Zaposlenici" />
+      <End Role="Cas" EntitySet="Cas" />
+    </AssociationSet>
+    <AssociationSet Name="Evidentira" Association="ModelOsnovnaSkola.Store.Evidentira">
+      <End Role="Zaposleni" EntitySet="Zaposlenici" />
+      <End Role="Prisustvo" EntitySet="Prisustva" />
+    </AssociationSet>
+    <AssociationSet Name="ZaposleniRadi" Association="ModelOsnovnaSkola.Store.ZaposleniRadi">
+      <End Role="Zaposleni" EntitySet="Zaposlenici" />
+      <End Role="Radi" EntitySet="Rade" />
+    </AssociationSet>
+    <AssociationSet Name="ZaposleniPredavanje" Association="ModelOsnovnaSkola.Store.ZaposleniPredavanje">
+      <End Role="Zaposleni" EntitySet="Zaposlenici" />
+      <End Role="Predavanje" EntitySet="Predavanja" />
+    </AssociationSet>
+    <AssociationSet Name="NastavnikNastavnikOdeljenje" Association="ModelOsnovnaSkola.Store.NastavnikNastavnikOdeljenje">
+      <End Role="Nastavnik" EntitySet="Zaposlenici_Nastavnik" />
+      <End Role="NastavnikOdeljenje" EntitySet="NastavnikOdeljenjes" />
+    </AssociationSet>
+    <AssociationSet Name="OdeljenjeNastavnikOdeljenje" Association="ModelOsnovnaSkola.Store.OdeljenjeNastavnikOdeljenje">
+      <End Role="Odeljenje" EntitySet="Odeljenja" />
+      <End Role="NastavnikOdeljenje" EntitySet="NastavnikOdeljenjes" />
+    </AssociationSet>
+    <AssociationSet Name="PredmetNastavnik" Association="ModelOsnovnaSkola.Store.PredmetNastavnik">
+      <End Role="Predmet" EntitySet="Predmeti" />
+      <End Role="Nastavnik" EntitySet="Zaposlenici_Nastavnik" />
+    </AssociationSet>
+    <AssociationSet Name="UciteljOdeljenje" Association="ModelOsnovnaSkola.Store.UciteljOdeljenje">
+      <End Role="Ucitelj" EntitySet="Zaposlenici_Ucitelj" />
+      <End Role="Odeljenje" EntitySet="Odeljenja" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Nastavnik_inherits_Zaposleni" Association="ModelOsnovnaSkola.Store.FK_Nastavnik_inherits_Zaposleni">
+      <End Role="Zaposleni" EntitySet="Zaposlenici" />
+      <End Role="Nastavnik" EntitySet="Zaposlenici_Nastavnik" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ucitelj_inherits_Zaposleni" Association="ModelOsnovnaSkola.Store.FK_Ucitelj_inherits_Zaposleni">
+      <End Role="Zaposleni" EntitySet="Zaposlenici" />
+      <End Role="Ucitelj" EntitySet="Zaposlenici_Ucitelj" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Domaci_inherits_Kontrolna_tacka" Association="ModelOsnovnaSkola.Store.FK_Domaci_inherits_Kontrolna_tacka">
+      <End Role="Kontrolna_tacka" EntitySet="Kontrolna_tacka" />
+      <End Role="Domaci" EntitySet="Kontrolna_tacka_Domaci" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kontrolni_inherits_Kontrolna_tacka" Association="ModelOsnovnaSkola.Store.FK_Kontrolni_inherits_Kontrolna_tacka">
+      <End Role="Kontrolna_tacka" EntitySet="Kontrolna_tacka" />
+      <End Role="Kontrolni" EntitySet="Kontrolna_tacka_Kontrolni" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Zaposlenici">
+    <Key>
+      <PropertyRef Name="Id_zaposlenog" />
+    </Key>
+    <Property Name="Id_zaposlenog" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="prezime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="zvanje" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kontrolna_tacka">
+    <Key>
+      <PropertyRef Name="Id_kontrolne_tacke" />
+    </Key>
+    <Property Name="Id_kontrolne_tacke" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="zadatak" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ZaposleniId_zaposlenog" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Predavanja">
+    <Key>
+      <PropertyRef Name="Id_predavanja" />
+    </Key>
+    <Property Name="Id_predavanja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="opis" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="datum_odrzavanja" Type="datetime" Nullable="false" />
+    <Property Name="OblastId_oblasti" Type="int" Nullable="false" />
+    <Property Name="ZaposleniId_zaposlenog" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Oblasti">
+    <Key>
+      <PropertyRef Name="Id_oblasti" />
+    </Key>
+    <Property Name="Id_oblasti" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="naziv" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PredmetId_predmeta" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cas">
+    <Key>
+      <PropertyRef Name="Id_casa" />
+    </Key>
+    <Property Name="Id_casa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pocetak" Type="time" Nullable="false" />
+    <Property Name="kraj" Type="time" Nullable="false" />
+    <Property Name="datum" Type="datetime" Nullable="false" />
+    <Property Name="OblastId_oblasti" Type="int" Nullable="true" />
+    <Property Name="ZaposleniId_zaposlenog" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Predmeti">
+    <Key>
+      <PropertyRef Name="Id_predmeta" />
+    </Key>
+    <Property Name="Id_predmeta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="razred" Type="smallint" Nullable="false" />
+    <Property Name="naziv" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="broj_oblasti" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Odeljenja">
+    <Key>
+      <PropertyRef Name="Id_odeljenja" />
+    </Key>
+    <Property Name="Id_odeljenja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="razred" Type="smallint" Nullable="false" />
+    <Property Name="Ucitelj_Id_zaposlenog" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Ucenici">
+    <Key>
+      <PropertyRef Name="Id_ucenika" />
+    </Key>
+    <Property Name="Id_ucenika" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="prezime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OdeljenjeId_odeljenja" Type="int" Nullable="false" />
+    <Property Name="Odeljenje_Id_odeljenja" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="KontrolnaTackaCasovi">
+    <Key>
+      <PropertyRef Name="Kontrolna_tackaId_kontrolne_tacke" />
+      <PropertyRef Name="CasId_casa" />
+    </Key>
+    <Property Name="Kontrolna_tackaId_kontrolne_tacke" Type="int" Nullable="false" />
+    <Property Name="CasId_casa" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Imaju">
+    <Key>
+      <PropertyRef Name="OdeljenjeId_odeljenja" />
+      <PropertyRef Name="CasId_casa" />
+    </Key>
+    <Property Name="OdeljenjeId_odeljenja" Type="int" Nullable="false" />
+    <Property Name="CasId_casa" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prisustva">
+    <Key>
+      <PropertyRef Name="UcenikId_ucenika" />
+      <PropertyRef Name="CasId_casa" />
+    </Key>
+    <Property Name="UcenikId_ucenika" Type="int" Nullable="false" />
+    <Property Name="CasId_casa" Type="int" Nullable="false" />
+    <Property Name="ZaposleniId_zaposlenog" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rade">
+    <Key>
+      <PropertyRef Name="Kontrolna_tackaId_kontrolne_tacke" />
+      <PropertyRef Name="UcenikId_ucenika" />
+    </Key>
+    <Property Name="Kontrolna_tackaId_kontrolne_tacke" Type="int" Nullable="false" />
+    <Property Name="UcenikId_ucenika" Type="int" Nullable="false" />
+    <Property Name="ZaposleniId_zaposlenog" Type="int" Nullable="false" />
+    <Property Name="ocena" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NastavnikOdeljenjes">
+    <Key>
+      <PropertyRef Name="NastavnikId_zaposlenog" />
+      <PropertyRef Name="OdeljenjeId_odeljenja" />
+    </Key>
+    <Property Name="NastavnikId_zaposlenog" Type="int" Nullable="false" />
+    <Property Name="OdeljenjeId_odeljenja" Type="int" Nullable="false" />
+    <Property Name="Razredni" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zaposlenici_Nastavnik">
+    <Key>
+      <PropertyRef Name="Id_zaposlenog" />
+    </Key>
+    <Property Name="PredmetId_predmeta" Type="int" Nullable="true" />
+    <Property Name="Id_zaposlenog" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zaposlenici_Ucitelj">
+    <Key>
+      <PropertyRef Name="Id_zaposlenog" />
+    </Key>
+    <Property Name="Id_zaposlenog" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kontrolna_tacka_Domaci">
+    <Key>
+      <PropertyRef Name="Id_kontrolne_tacke" />
+    </Key>
+    <Property Name="dan_zadavanja" Type="datetime" Nullable="false" />
+    <Property Name="dan_predaje" Type="datetime" Nullable="false" />
+    <Property Name="Id_kontrolne_tacke" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kontrolna_tacka_Kontrolni">
+    <Key>
+      <PropertyRef Name="Id_kontrolne_tacke" />
+    </Key>
+    <Property Name="datum_odrzavanja" Type="datetime" Nullable="false" />
+    <Property Name="Id_kontrolne_tacke" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="Zadaje">
+    <End Role="Zaposleni" Type="ModelOsnovnaSkola.Store.Zaposlenici" Multiplicity="1" />
+    <End Role="Kontrolna_tacka" Type="ModelOsnovnaSkola.Store.Kontrolna_tacka" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zaposleni">
+        <PropertyRef Name="Id_zaposlenog" />
+      </Principal>
+      <Dependent Role="Kontrolna_tacka">
+        <PropertyRef Name="ZaposleniId_zaposlenog" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Vezana">
+    <End Role="Predavanje" Type="ModelOsnovnaSkola.Store.Predavanja" Multiplicity="*" />
+    <End Role="Oblast" Type="ModelOsnovnaSkola.Store.Oblasti" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Oblast">
+        <PropertyRef Name="Id_oblasti" />
+      </Principal>
+      <Dependent Role="Predavanje">
+        <PropertyRef Name="OblastId_oblasti" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PredmetOblast">
+    <End Role="Predmet" Type="ModelOsnovnaSkola.Store.Predmeti" Multiplicity="1" />
+    <End Role="Oblast" Type="ModelOsnovnaSkola.Store.Oblasti" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Predmet">
+        <PropertyRef Name="Id_predmeta" />
+      </Principal>
+      <Dependent Role="Oblast">
+        <PropertyRef Name="PredmetId_predmeta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Pripada">
+    <End Role="Odeljenje" Type="ModelOsnovnaSkola.Store.Odeljenja" Multiplicity="0..1" />
+    <End Role="Ucenik" Type="ModelOsnovnaSkola.Store.Ucenici" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Odeljenje">
+        <PropertyRef Name="Id_odeljenja" />
+      </Principal>
+      <Dependent Role="Ucenik">
+        <PropertyRef Name="Odeljenje_Id_odeljenja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Predjena">
+    <End Role="Oblast" Type="ModelOsnovnaSkola.Store.Oblasti" Multiplicity="0..1" />
+    <End Role="Cas" Type="ModelOsnovnaSkola.Store.Cas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Oblast">
+        <PropertyRef Name="Id_oblasti" />
+      </Principal>
+      <Dependent Role="Cas">
+        <PropertyRef Name="OblastId_oblasti" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Kontrolna_tackaOdrzava">
+    <End Role="Kontrolna_tacka" Type="ModelOsnovnaSkola.Store.Kontrolna_tacka" Multiplicity="1" />
+    <End Role="KontrolnaTackaCas" Type="ModelOsnovnaSkola.Store.KontrolnaTackaCasovi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kontrolna_tacka">
+        <PropertyRef Name="Id_kontrolne_tacke" />
+      </Principal>
+      <Dependent Role="KontrolnaTackaCas">
+        <PropertyRef Name="Kontrolna_tackaId_kontrolne_tacke" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CasOdrzava">
+    <End Role="Cas" Type="ModelOsnovnaSkola.Store.Cas" Multiplicity="1" />
+    <End Role="KontrolnaTackaCas" Type="ModelOsnovnaSkola.Store.KontrolnaTackaCasovi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cas">
+        <PropertyRef Name="Id_casa" />
+      </Principal>
+      <Dependent Role="KontrolnaTackaCas">
+        <PropertyRef Name="CasId_casa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OdeljenjeIma">
+    <End Role="Odeljenje" Type="ModelOsnovnaSkola.Store.Odeljenja" Multiplicity="1" />
+    <End Role="Ima" Type="ModelOsnovnaSkola.Store.Imaju" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Odeljenje">
+        <PropertyRef Name="Id_odeljenja" />
+      </Principal>
+      <Dependent Role="Ima">
+        <PropertyRef Name="OdeljenjeId_odeljenja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CasIma">
+    <End Role="Cas" Type="ModelOsnovnaSkola.Store.Cas" Multiplicity="1" />
+    <End Role="Ima" Type="ModelOsnovnaSkola.Store.Imaju" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cas">
+        <PropertyRef Name="Id_casa" />
+      </Principal>
+      <Dependent Role="Ima">
+        <PropertyRef Name="CasId_casa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UcenikPrisustvo">
+    <End Role="Ucenik" Type="ModelOsnovnaSkola.Store.Ucenici" Multiplicity="1" />
+    <End Role="Prisustvo" Type="ModelOsnovnaSkola.Store.Prisustva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ucenik">
+        <PropertyRef Name="Id_ucenika" />
+      </Principal>
+      <Dependent Role="Prisustvo">
+        <PropertyRef Name="UcenikId_ucenika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CasPrisustvo">
+    <End Role="Cas" Type="ModelOsnovnaSkola.Store.Cas" Multiplicity="1" />
+    <End Role="Prisustvo" Type="ModelOsnovnaSkola.Store.Prisustva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cas">
+        <PropertyRef Name="Id_casa" />
+      </Principal>
+      <Dependent Role="Prisustvo">
+        <PropertyRef Name="CasId_casa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Kontrolna_tackaRadi">
+    <End Role="Kontrolna_tacka" Type="ModelOsnovnaSkola.Store.Kontrolna_tacka" Multiplicity="1" />
+    <End Role="Radi" Type="ModelOsnovnaSkola.Store.Rade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kontrolna_tacka">
+        <PropertyRef Name="Id_kontrolne_tacke" />
+      </Principal>
+      <Dependent Role="Radi">
+        <PropertyRef Name="Kontrolna_tackaId_kontrolne_tacke" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UcenikRadi">
+    <End Role="Ucenik" Type="ModelOsnovnaSkola.Store.Ucenici" Multiplicity="1" />
+    <End Role="Radi" Type="ModelOsnovnaSkola.Store.Rade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ucenik">
+        <PropertyRef Name="Id_ucenika" />
+      </Principal>
+      <Dependent Role="Radi">
+        <PropertyRef Name="UcenikId_ucenika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Drzi">
+    <End Role="Zaposleni" Type="ModelOsnovnaSkola.Store.Zaposlenici" Multiplicity="1" />
+    <End Role="Cas" Type="ModelOsnovnaSkola.Store.Cas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zaposleni">
+        <PropertyRef Name="Id_zaposlenog" />
+      </Principal>
+      <Dependent Role="Cas">
+        <PropertyRef Name="ZaposleniId_zaposlenog" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Evidentira">
+    <End Role="Zaposleni" Type="ModelOsnovnaSkola.Store.Zaposlenici" Multiplicity="1" />
+    <End Role="Prisustvo" Type="ModelOsnovnaSkola.Store.Prisustva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zaposleni">
+        <PropertyRef Name="Id_zaposlenog" />
+      </Principal>
+      <Dependent Role="Prisustvo">
+        <PropertyRef Name="ZaposleniId_zaposlenog" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ZaposleniRadi">
+    <End Role="Zaposleni" Type="ModelOsnovnaSkola.Store.Zaposlenici" Multiplicity="1" />
+    <End Role="Radi" Type="ModelOsnovnaSkola.Store.Rade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zaposleni">
+        <PropertyRef Name="Id_zaposlenog" />
+      </Principal>
+      <Dependent Role="Radi">
+        <PropertyRef Name="ZaposleniId_zaposlenog" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ZaposleniPredavanje">
+    <End Role="Zaposleni" Type="ModelOsnovnaSkola.Store.Zaposlenici" Multiplicity="1" />
+    <End Role="Predavanje" Type="ModelOsnovnaSkola.Store.Predavanja" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zaposleni">
+        <PropertyRef Name="Id_zaposlenog" />
+      </Principal>
+      <Dependent Role="Predavanje">
+        <PropertyRef Name="ZaposleniId_zaposlenog" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NastavnikNastavnikOdeljenje">
+    <End Role="Nastavnik" Type="ModelOsnovnaSkola.Store.Zaposlenici_Nastavnik" Multiplicity="1" />
+    <End Role="NastavnikOdeljenje" Type="ModelOsnovnaSkola.Store.NastavnikOdeljenjes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nastavnik">
+        <PropertyRef Name="Id_zaposlenog" />
+      </Principal>
+      <Dependent Role="NastavnikOdeljenje">
+        <PropertyRef Name="NastavnikId_zaposlenog" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OdeljenjeNastavnikOdeljenje">
+    <End Role="Odeljenje" Type="ModelOsnovnaSkola.Store.Odeljenja" Multiplicity="1" />
+    <End Role="NastavnikOdeljenje" Type="ModelOsnovnaSkola.Store.NastavnikOdeljenjes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Odeljenje">
+        <PropertyRef Name="Id_odeljenja" />
+      </Principal>
+      <Dependent Role="NastavnikOdeljenje">
+        <PropertyRef Name="OdeljenjeId_odeljenja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PredmetNastavnik">
+    <End Role="Predmet" Type="ModelOsnovnaSkola.Store.Predmeti" Multiplicity="0..1" />
+    <End Role="Nastavnik" Type="ModelOsnovnaSkola.Store.Zaposlenici_Nastavnik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Predmet">
+        <PropertyRef Name="Id_predmeta" />
+      </Principal>
+      <Dependent Role="Nastavnik">
+        <PropertyRef Name="PredmetId_predmeta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UciteljOdeljenje">
+    <End Role="Ucitelj" Type="ModelOsnovnaSkola.Store.Zaposlenici_Ucitelj" Multiplicity="0..1" />
+    <End Role="Odeljenje" Type="ModelOsnovnaSkola.Store.Odeljenja" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ucitelj">
+        <PropertyRef Name="Id_zaposlenog" />
+      </Principal>
+      <Dependent Role="Odeljenje">
+        <PropertyRef Name="Ucitelj_Id_zaposlenog" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Nastavnik_inherits_Zaposleni">
+    <End Role="Zaposleni" Type="ModelOsnovnaSkola.Store.Zaposlenici" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Nastavnik" Type="ModelOsnovnaSkola.Store.Zaposlenici_Nastavnik" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Zaposleni">
+        <PropertyRef Name="Id_zaposlenog" />
+      </Principal>
+      <Dependent Role="Nastavnik">
+        <PropertyRef Name="Id_zaposlenog" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ucitelj_inherits_Zaposleni">
+    <End Role="Zaposleni" Type="ModelOsnovnaSkola.Store.Zaposlenici" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Ucitelj" Type="ModelOsnovnaSkola.Store.Zaposlenici_Ucitelj" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Zaposleni">
+        <PropertyRef Name="Id_zaposlenog" />
+      </Principal>
+      <Dependent Role="Ucitelj">
+        <PropertyRef Name="Id_zaposlenog" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Domaci_inherits_Kontrolna_tacka">
+    <End Role="Kontrolna_tacka" Type="ModelOsnovnaSkola.Store.Kontrolna_tacka" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Domaci" Type="ModelOsnovnaSkola.Store.Kontrolna_tacka_Domaci" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Kontrolna_tacka">
+        <PropertyRef Name="Id_kontrolne_tacke" />
+      </Principal>
+      <Dependent Role="Domaci">
+        <PropertyRef Name="Id_kontrolne_tacke" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kontrolni_inherits_Kontrolna_tacka">
+    <End Role="Kontrolna_tacka" Type="ModelOsnovnaSkola.Store.Kontrolna_tacka" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Kontrolni" Type="ModelOsnovnaSkola.Store.Kontrolna_tacka_Kontrolni" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Kontrolna_tacka">
+        <PropertyRef Name="Id_kontrolne_tacke" />
+      </Principal>
+      <Dependent Role="Kontrolni">
+        <PropertyRef Name="Id_kontrolne_tacke" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ModelOsnovnaSkola" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ModelOsnovnaSkolaContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Zaposlenici" EntityType="ModelOsnovnaSkola.Zaposleni" />
+          <EntitySet Name="Kontrolna_tacka" EntityType="ModelOsnovnaSkola.Kontrolna_tacka" />
+          <EntitySet Name="Predavanja" EntityType="ModelOsnovnaSkola.Predavanje" />
+          <EntitySet Name="Oblasti" EntityType="ModelOsnovnaSkola.Oblast" />
+          <EntitySet Name="Cas" EntityType="ModelOsnovnaSkola.Cas" />
+          <EntitySet Name="Predmeti" EntityType="ModelOsnovnaSkola.Predmet" />
+          <EntitySet Name="Odeljenja" EntityType="ModelOsnovnaSkola.Odeljenje" />
+          <EntitySet Name="Ucenici" EntityType="ModelOsnovnaSkola.Ucenik" />
+          <AssociationSet Name="Zadaje" Association="ModelOsnovnaSkola.Zadaje">
+            <End Role="Zaposleni" EntitySet="Zaposlenici" />
+            <End Role="Kontrolna_tacka" EntitySet="Kontrolna_tacka" />
+          </AssociationSet>
+          <AssociationSet Name="Vezana" Association="ModelOsnovnaSkola.Vezana">
+            <End Role="Predavanje" EntitySet="Predavanja" />
+            <End Role="Oblast" EntitySet="Oblasti" />
+          </AssociationSet>
+          <AssociationSet Name="Sadrzi" Association="ModelOsnovnaSkola.PredmetOblast">
+            <End Role="Predmet" EntitySet="Predmeti" />
+            <End Role="Oblast" EntitySet="Oblasti" />
+          </AssociationSet>
+          <AssociationSet Name="Pripada" Association="ModelOsnovnaSkola.Pripada">
+            <End Role="Odeljenje" EntitySet="Odeljenja" />
+            <End Role="Ucenik" EntitySet="Ucenici" />
+          </AssociationSet>
+          <AssociationSet Name="Predjena" Association="ModelOsnovnaSkola.Predjena">
+            <End Role="Oblast" EntitySet="Oblasti" />
+            <End Role="Cas" EntitySet="Cas" />
+          </AssociationSet>
+          <EntitySet Name="KontrolnaTackaCasovi" EntityType="ModelOsnovnaSkola.Odrzava" />
+          <AssociationSet Name="Kontrolna_tackaOdrzava" Association="ModelOsnovnaSkola.Kontrolna_tackaOdrzava">
+            <End Role="Kontrolna_tacka" EntitySet="Kontrolna_tacka" />
+            <End Role="KontrolnaTackaCas" EntitySet="KontrolnaTackaCasovi" />
+          </AssociationSet>
+          <AssociationSet Name="CasOdrzava" Association="ModelOsnovnaSkola.CasOdrzava">
+            <End Role="Cas" EntitySet="Cas" />
+            <End Role="KontrolnaTackaCas" EntitySet="KontrolnaTackaCasovi" />
+          </AssociationSet>
+          <EntitySet Name="Imaju" EntityType="ModelOsnovnaSkola.Ima" />
+          <AssociationSet Name="OdeljenjeIma" Association="ModelOsnovnaSkola.OdeljenjeIma">
+            <End Role="Odeljenje" EntitySet="Odeljenja" />
+            <End Role="Ima" EntitySet="Imaju" />
+          </AssociationSet>
+          <AssociationSet Name="CasIma" Association="ModelOsnovnaSkola.CasIma">
+            <End Role="Cas" EntitySet="Cas" />
+            <End Role="Ima" EntitySet="Imaju" />
+          </AssociationSet>
+          <EntitySet Name="Prisustva" EntityType="ModelOsnovnaSkola.Prisustvo" />
+          <AssociationSet Name="UcenikPrisustvo" Association="ModelOsnovnaSkola.UcenikPrisustvo">
+            <End Role="Ucenik" EntitySet="Ucenici" />
+            <End Role="Prisustvo" EntitySet="Prisustva" />
+          </AssociationSet>
+          <AssociationSet Name="CasPrisustvo" Association="ModelOsnovnaSkola.CasPrisustvo">
+            <End Role="Cas" EntitySet="Cas" />
+            <End Role="Prisustvo" EntitySet="Prisustva" />
+          </AssociationSet>
+          <EntitySet Name="Rade" EntityType="ModelOsnovnaSkola.Radi" />
+          <AssociationSet Name="Kontrolna_tackaRadi" Association="ModelOsnovnaSkola.Kontrolna_tackaRadi">
+            <End Role="Kontrolna_tacka" EntitySet="Kontrolna_tacka" />
+            <End Role="Radi" EntitySet="Rade" />
+          </AssociationSet>
+          <AssociationSet Name="UcenikRadi" Association="ModelOsnovnaSkola.UcenikRadi">
+            <End Role="Ucenik" EntitySet="Ucenici" />
+            <End Role="Radi" EntitySet="Rade" />
+          </AssociationSet>
+          <AssociationSet Name="Drzi" Association="ModelOsnovnaSkola.Drzi">
+            <End Role="Zaposleni" EntitySet="Zaposlenici" />
+            <End Role="Cas" EntitySet="Cas" />
+          </AssociationSet>
+          <AssociationSet Name="Evidentira" Association="ModelOsnovnaSkola.Evidentira">
+            <End Role="Zaposleni" EntitySet="Zaposlenici" />
+            <End Role="Prisustvo" EntitySet="Prisustva" />
+          </AssociationSet>
+          <AssociationSet Name="ZaposleniRadi" Association="ModelOsnovnaSkola.ZaposleniRadi">
+            <End Role="Zaposleni" EntitySet="Zaposlenici" />
+            <End Role="Radi" EntitySet="Rade" />
+          </AssociationSet>
+          <AssociationSet Name="ZaposleniPredavanje" Association="ModelOsnovnaSkola.ZaposleniPredavanje">
+            <End Role="Zaposleni" EntitySet="Zaposlenici" />
+            <End Role="Predavanje" EntitySet="Predavanja" />
+          </AssociationSet>
+          <EntitySet Name="NastavnikOdeljenjes" EntityType="ModelOsnovnaSkola.NastavnikOdeljenje" />
+          <AssociationSet Name="NastavnikNastavnikOdeljenje" Association="ModelOsnovnaSkola.NastavnikNastavnikOdeljenje">
+            <End Role="Nastavnik" EntitySet="Zaposlenici" />
+            <End Role="NastavnikOdeljenje" EntitySet="NastavnikOdeljenjes" />
+          </AssociationSet>
+          <AssociationSet Name="OdeljenjeNastavnikOdeljenje" Association="ModelOsnovnaSkola.OdeljenjeNastavnikOdeljenje">
+            <End Role="Odeljenje" EntitySet="Odeljenja" />
+            <End Role="NastavnikOdeljenje" EntitySet="NastavnikOdeljenjes" />
+          </AssociationSet>
+          <AssociationSet Name="PredmetNastavnik" Association="ModelOsnovnaSkola.PredmetNastavnik">
+            <End Role="Predmet" EntitySet="Predmeti" />
+            <End Role="Nastavnik" EntitySet="Zaposlenici" />
+          </AssociationSet>
+          <AssociationSet Name="UciteljOdeljenje" Association="ModelOsnovnaSkola.UciteljOdeljenje">
+            <End Role="Ucitelj" EntitySet="Zaposlenici" />
+            <End Role="Odeljenje" EntitySet="Odeljenja" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Zaposleni">
+          <Key>
+            <PropertyRef Name="Id_zaposlenog" />
+          </Key>
+          <Property Name="Id_zaposlenog" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ime" Type="String" Nullable="false" />
+          <Property Name="prezime" Type="String" Nullable="false" />
+          <Property Name="zvanje" Type="String" Nullable="false" />
+          <NavigationProperty Name="Kontrolna_tacka" Relationship="ModelOsnovnaSkola.Zadaje" FromRole="Zaposleni" ToRole="Kontrolna_tacka" />
+          <NavigationProperty Name="Casovi" Relationship="ModelOsnovnaSkola.Drzi" FromRole="Zaposleni" ToRole="Cas" />
+          <NavigationProperty Name="Prisustva" Relationship="ModelOsnovnaSkola.Evidentira" FromRole="Zaposleni" ToRole="Prisustvo" />
+          <NavigationProperty Name="Radovi" Relationship="ModelOsnovnaSkola.ZaposleniRadi" FromRole="Zaposleni" ToRole="Radi" />
+          <NavigationProperty Name="Predavanja" Relationship="ModelOsnovnaSkola.ZaposleniPredavanje" FromRole="Zaposleni" ToRole="Predavanje" />
+        </EntityType>
+        <EntityType Name="Ucitelj" BaseType="ModelOsnovnaSkola.Zaposleni" >
+          <NavigationProperty Name="Odeljenje" Relationship="ModelOsnovnaSkola.UciteljOdeljenje" FromRole="Ucitelj" ToRole="Odeljenje" />
+        </EntityType>
+        <EntityType Name="Nastavnik" BaseType="ModelOsnovnaSkola.Zaposleni" >
+          <NavigationProperty Name="NastavnikOdeljenjes" Relationship="ModelOsnovnaSkola.NastavnikNastavnikOdeljenje" FromRole="Nastavnik" ToRole="NastavnikOdeljenje" />
+          <NavigationProperty Name="Predmet" Relationship="ModelOsnovnaSkola.PredmetNastavnik" FromRole="Nastavnik" ToRole="Predmet" />
+          <Property Name="PredmetId_predmeta" Type="Int32" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Kontrolna_tacka">
+          <Key>
+            <PropertyRef Name="Id_kontrolne_tacke" />
+          </Key>
+          <Property Name="Id_kontrolne_tacke" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="zadatak" Type="String" Nullable="false" />
+          <NavigationProperty Name="Zaposleni" Relationship="ModelOsnovnaSkola.Zadaje" FromRole="Kontrolna_tacka" ToRole="Zaposleni" />
+          <Property Name="ZaposleniId_zaposlenog" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Odrzavane" Relationship="ModelOsnovnaSkola.Kontrolna_tackaOdrzava" FromRole="Kontrolna_tacka" ToRole="KontrolnaTackaCas" />
+          <NavigationProperty Name="Rade" Relationship="ModelOsnovnaSkola.Kontrolna_tackaRadi" FromRole="Kontrolna_tacka" ToRole="Radi" />
+        </EntityType>
+        <EntityType Name="Domaci" BaseType="ModelOsnovnaSkola.Kontrolna_tacka" >
+          <Property Name="dan_zadavanja" Type="DateTime" Nullable="false" />
+          <Property Name="dan_predaje" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kontrolni" BaseType="ModelOsnovnaSkola.Kontrolna_tacka" >
+          <Property Name="datum_odrzavanja" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Predavanje">
+          <Key>
+            <PropertyRef Name="Id_predavanja" />
+          </Key>
+          <Property Name="Id_predavanja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="opis" Type="String" Nullable="false" />
+          <Property Name="datum_odrzavanja" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Oblast" Relationship="ModelOsnovnaSkola.Vezana" FromRole="Predavanje" ToRole="Oblast" />
+          <Property Name="OblastId_oblasti" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Zaposleni" Relationship="ModelOsnovnaSkola.ZaposleniPredavanje" FromRole="Predavanje" ToRole="Zaposleni" />
+          <Property Name="ZaposleniId_zaposlenog" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Oblast">
+          <Key>
+            <PropertyRef Name="Id_oblasti" />
+          </Key>
+          <Property Name="Id_oblasti" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" Nullable="false" />
+          <NavigationProperty Name="Predavanja" Relationship="ModelOsnovnaSkola.Vezana" FromRole="Oblast" ToRole="Predavanje" />
+          <NavigationProperty Name="Predmet" Relationship="ModelOsnovnaSkola.PredmetOblast" FromRole="Oblast" ToRole="Predmet" />
+          <Property Name="PredmetId_predmeta" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Casovi" Relationship="ModelOsnovnaSkola.Predjena" FromRole="Oblast" ToRole="Cas" />
+        </EntityType>
+        <EntityType Name="Cas">
+          <Key>
+            <PropertyRef Name="Id_casa" />
+          </Key>
+          <Property Name="Id_casa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pocetak" Type="Time" Nullable="false" />
+          <Property Name="kraj" Type="Time" Nullable="false" />
+          <Property Name="datum" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Oblast" Relationship="ModelOsnovnaSkola.Predjena" FromRole="Cas" ToRole="Oblast" />
+          <Property Name="OblastId_oblasti" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="Odrzavane" Relationship="ModelOsnovnaSkola.CasOdrzava" FromRole="Cas" ToRole="KontrolnaTackaCas" />
+          <NavigationProperty Name="Imaju" Relationship="ModelOsnovnaSkola.CasIma" FromRole="Cas" ToRole="Ima" />
+          <NavigationProperty Name="Prisustva" Relationship="ModelOsnovnaSkola.CasPrisustvo" FromRole="Cas" ToRole="Prisustvo" />
+          <NavigationProperty Name="Zaposleni" Relationship="ModelOsnovnaSkola.Drzi" FromRole="Cas" ToRole="Zaposleni" />
+          <Property Name="ZaposleniId_zaposlenog" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Predmet">
+          <Key>
+            <PropertyRef Name="Id_predmeta" />
+          </Key>
+          <Property Name="Id_predmeta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="razred" Type="Int16" Nullable="false" />
+          <Property Name="naziv" Type="String" Nullable="false" />
+          <Property Name="broj_oblasti" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Oblasti" Relationship="ModelOsnovnaSkola.PredmetOblast" FromRole="Predmet" ToRole="Oblast" />
+          <NavigationProperty Name="Nastavnici" Relationship="ModelOsnovnaSkola.PredmetNastavnik" FromRole="Predmet" ToRole="Nastavnik" />
+        </EntityType>
+        <EntityType Name="Odeljenje">
+          <Key>
+            <PropertyRef Name="Id_odeljenja" />
+          </Key>
+          <Property Name="Id_odeljenja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="razred" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Ucenici" Relationship="ModelOsnovnaSkola.Pripada" FromRole="Odeljenje" ToRole="Ucenik" />
+          <NavigationProperty Name="Imaju" Relationship="ModelOsnovnaSkola.OdeljenjeIma" FromRole="Odeljenje" ToRole="Ima" />
+          <NavigationProperty Name="NastavnikOdeljenjes" Relationship="ModelOsnovnaSkola.OdeljenjeNastavnikOdeljenje" FromRole="Odeljenje" ToRole="NastavnikOdeljenje" />
+          <NavigationProperty Name="Ucitelj" Relationship="ModelOsnovnaSkola.UciteljOdeljenje" FromRole="Odeljenje" ToRole="Ucitelj" />
+        </EntityType>
+        <EntityType Name="Ucenik">
+          <Key>
+            <PropertyRef Name="Id_ucenika" />
+          </Key>
+          <Property Name="Id_ucenika" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ime" Type="String" Nullable="false" />
+          <Property Name="prezime" Type="String" Nullable="false" />
+          <NavigationProperty Name="Odeljenje" Relationship="ModelOsnovnaSkola.Pripada" FromRole="Ucenik" ToRole="Odeljenje" />
+          <Property Name="OdeljenjeId_odeljenja" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Prisustva" Relationship="ModelOsnovnaSkola.UcenikPrisustvo" FromRole="Ucenik" ToRole="Prisustvo" />
+          <NavigationProperty Name="Rade" Relationship="ModelOsnovnaSkola.UcenikRadi" FromRole="Ucenik" ToRole="Radi" />
+        </EntityType>
+        <Association Name="Zadaje">
+          <End Type="ModelOsnovnaSkola.Zaposleni" Role="Zaposleni" Multiplicity="1" />
+          <End Type="ModelOsnovnaSkola.Kontrolna_tacka" Role="Kontrolna_tacka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zaposleni">
+              <PropertyRef Name="Id_zaposlenog" />
+            </Principal>
+            <Dependent Role="Kontrolna_tacka">
+              <PropertyRef Name="ZaposleniId_zaposlenog" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Vezana">
+          <End Type="ModelOsnovnaSkola.Predavanje" Role="Predavanje" Multiplicity="*" />
+          <End Type="ModelOsnovnaSkola.Oblast" Role="Oblast" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Oblast">
+              <PropertyRef Name="Id_oblasti" />
+            </Principal>
+            <Dependent Role="Predavanje">
+              <PropertyRef Name="OblastId_oblasti" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PredmetOblast">
+          <End Type="ModelOsnovnaSkola.Predmet" Role="Predmet" Multiplicity="1" />
+          <End Type="ModelOsnovnaSkola.Oblast" Role="Oblast" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Predmet">
+              <PropertyRef Name="Id_predmeta" />
+            </Principal>
+            <Dependent Role="Oblast">
+              <PropertyRef Name="PredmetId_predmeta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Pripada">
+          <End Type="ModelOsnovnaSkola.Odeljenje" Role="Odeljenje" Multiplicity="0..1" />
+          <End Type="ModelOsnovnaSkola.Ucenik" Role="Ucenik" Multiplicity="*" />
+        </Association>
+        <Association Name="Predjena">
+          <End Type="ModelOsnovnaSkola.Oblast" Role="Oblast" Multiplicity="0..1" />
+          <End Type="ModelOsnovnaSkola.Cas" Role="Cas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Oblast">
+              <PropertyRef Name="Id_oblasti" />
+            </Principal>
+            <Dependent Role="Cas">
+              <PropertyRef Name="OblastId_oblasti" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Odrzava" >
+          <Key>
+            <PropertyRef Name="Kontrolna_tackaId_kontrolne_tacke" />
+            <PropertyRef Name="CasId_casa" />
+          </Key>
+          <NavigationProperty Name="Kontrolna_tacka" Relationship="ModelOsnovnaSkola.Kontrolna_tackaOdrzava" FromRole="KontrolnaTackaCas" ToRole="Kontrolna_tacka" />
+          <Property Name="Kontrolna_tackaId_kontrolne_tacke" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cas" Relationship="ModelOsnovnaSkola.CasOdrzava" FromRole="KontrolnaTackaCas" ToRole="Cas" />
+          <Property Name="CasId_casa" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="Kontrolna_tackaOdrzava">
+          <End Type="ModelOsnovnaSkola.Kontrolna_tacka" Role="Kontrolna_tacka" Multiplicity="1" />
+          <End Type="ModelOsnovnaSkola.Odrzava" Role="KontrolnaTackaCas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kontrolna_tacka">
+              <PropertyRef Name="Id_kontrolne_tacke" />
+            </Principal>
+            <Dependent Role="KontrolnaTackaCas">
+              <PropertyRef Name="Kontrolna_tackaId_kontrolne_tacke" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CasOdrzava">
+          <End Type="ModelOsnovnaSkola.Cas" Role="Cas" Multiplicity="1" />
+          <End Type="ModelOsnovnaSkola.Odrzava" Role="KontrolnaTackaCas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cas">
+              <PropertyRef Name="Id_casa" />
+            </Principal>
+            <Dependent Role="KontrolnaTackaCas">
+              <PropertyRef Name="CasId_casa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Ima" >
+          <Key>
+            <PropertyRef Name="OdeljenjeId_odeljenja" />
+            <PropertyRef Name="CasId_casa" />
+          </Key>
+          <NavigationProperty Name="Odeljenje" Relationship="ModelOsnovnaSkola.OdeljenjeIma" FromRole="Ima" ToRole="Odeljenje" />
+          <Property Name="OdeljenjeId_odeljenja" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cas" Relationship="ModelOsnovnaSkola.CasIma" FromRole="Ima" ToRole="Cas" />
+          <Property Name="CasId_casa" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="OdeljenjeIma">
+          <End Type="ModelOsnovnaSkola.Odeljenje" Role="Odeljenje" Multiplicity="1" />
+          <End Type="ModelOsnovnaSkola.Ima" Role="Ima" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Odeljenje">
+              <PropertyRef Name="Id_odeljenja" />
+            </Principal>
+            <Dependent Role="Ima">
+              <PropertyRef Name="OdeljenjeId_odeljenja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CasIma">
+          <End Type="ModelOsnovnaSkola.Cas" Role="Cas" Multiplicity="1" />
+          <End Type="ModelOsnovnaSkola.Ima" Role="Ima" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cas">
+              <PropertyRef Name="Id_casa" />
+            </Principal>
+            <Dependent Role="Ima">
+              <PropertyRef Name="CasId_casa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Prisustvo" >
+          <Key>
+            <PropertyRef Name="UcenikId_ucenika" />
+            <PropertyRef Name="CasId_casa" />
+          </Key>
+          <NavigationProperty Name="Ucenik" Relationship="ModelOsnovnaSkola.UcenikPrisustvo" FromRole="Prisustvo" ToRole="Ucenik" />
+          <Property Name="UcenikId_ucenika" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cas" Relationship="ModelOsnovnaSkola.CasPrisustvo" FromRole="Prisustvo" ToRole="Cas" />
+          <Property Name="CasId_casa" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Zaposleni" Relationship="ModelOsnovnaSkola.Evidentira" FromRole="Prisustvo" ToRole="Zaposleni" />
+          <Property Name="ZaposleniId_zaposlenog" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="UcenikPrisustvo">
+          <End Type="ModelOsnovnaSkola.Ucenik" Role="Ucenik" Multiplicity="1" />
+          <End Type="ModelOsnovnaSkola.Prisustvo" Role="Prisustvo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ucenik">
+              <PropertyRef Name="Id_ucenika" />
+            </Principal>
+            <Dependent Role="Prisustvo">
+              <PropertyRef Name="UcenikId_ucenika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CasPrisustvo">
+          <End Type="ModelOsnovnaSkola.Cas" Role="Cas" Multiplicity="1" />
+          <End Type="ModelOsnovnaSkola.Prisustvo" Role="Prisustvo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cas">
+              <PropertyRef Name="Id_casa" />
+            </Principal>
+            <Dependent Role="Prisustvo">
+              <PropertyRef Name="CasId_casa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Radi" >
+          <Key>
+            <PropertyRef Name="Kontrolna_tackaId_kontrolne_tacke" />
+            <PropertyRef Name="UcenikId_ucenika" />
+          </Key>
+          <NavigationProperty Name="Kontrolna_tacka" Relationship="ModelOsnovnaSkola.Kontrolna_tackaRadi" FromRole="Radi" ToRole="Kontrolna_tacka" />
+          <Property Name="Kontrolna_tackaId_kontrolne_tacke" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ucenik" Relationship="ModelOsnovnaSkola.UcenikRadi" FromRole="Radi" ToRole="Ucenik" />
+          <Property Name="UcenikId_ucenika" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Zaposleni" Relationship="ModelOsnovnaSkola.ZaposleniRadi" FromRole="Radi" ToRole="Zaposleni" />
+          <Property Name="ZaposleniId_zaposlenog" Type="Int32" Nullable="false" />
+          <Property Name="ocena" Type="Int16" Nullable="false" />
+        </EntityType>
+        <Association Name="Kontrolna_tackaRadi">
+          <End Type="ModelOsnovnaSkola.Kontrolna_tacka" Role="Kontrolna_tacka" Multiplicity="1" />
+          <End Type="ModelOsnovnaSkola.Radi" Role="Radi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kontrolna_tacka">
+              <PropertyRef Name="Id_kontrolne_tacke" />
+            </Principal>
+            <Dependent Role="Radi">
+              <PropertyRef Name="Kontrolna_tackaId_kontrolne_tacke" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UcenikRadi">
+          <End Type="ModelOsnovnaSkola.Ucenik" Role="Ucenik" Multiplicity="1" />
+          <End Type="ModelOsnovnaSkola.Radi" Role="Radi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ucenik">
+              <PropertyRef Name="Id_ucenika" />
+            </Principal>
+            <Dependent Role="Radi">
+              <PropertyRef Name="UcenikId_ucenika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Drzi">
+          <End Type="ModelOsnovnaSkola.Zaposleni" Role="Zaposleni" Multiplicity="1" />
+          <End Type="ModelOsnovnaSkola.Cas" Role="Cas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zaposleni">
+              <PropertyRef Name="Id_zaposlenog" />
+            </Principal>
+            <Dependent Role="Cas">
+              <PropertyRef Name="ZaposleniId_zaposlenog" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Evidentira">
+          <End Type="ModelOsnovnaSkola.Zaposleni" Role="Zaposleni" Multiplicity="1" />
+          <End Type="ModelOsnovnaSkola.Prisustvo" Role="Prisustvo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zaposleni">
+              <PropertyRef Name="Id_zaposlenog" />
+            </Principal>
+            <Dependent Role="Prisustvo">
+              <PropertyRef Name="ZaposleniId_zaposlenog" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ZaposleniRadi">
+          <End Type="ModelOsnovnaSkola.Zaposleni" Role="Zaposleni" Multiplicity="1" />
+          <End Type="ModelOsnovnaSkola.Radi" Role="Radi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zaposleni">
+              <PropertyRef Name="Id_zaposlenog" />
+            </Principal>
+            <Dependent Role="Radi">
+              <PropertyRef Name="ZaposleniId_zaposlenog" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ZaposleniPredavanje">
+          <End Type="ModelOsnovnaSkola.Zaposleni" Role="Zaposleni" Multiplicity="1" />
+          <End Type="ModelOsnovnaSkola.Predavanje" Role="Predavanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zaposleni">
+              <PropertyRef Name="Id_zaposlenog" />
+            </Principal>
+            <Dependent Role="Predavanje">
+              <PropertyRef Name="ZaposleniId_zaposlenog" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="NastavnikOdeljenje" >
+          <Key>
+            <PropertyRef Name="NastavnikId_zaposlenog" />
+            <PropertyRef Name="OdeljenjeId_odeljenja" />
+          </Key>
+          <NavigationProperty Name="Nastavnik" Relationship="ModelOsnovnaSkola.NastavnikNastavnikOdeljenje" FromRole="NastavnikOdeljenje" ToRole="Nastavnik" />
+          <Property Name="NastavnikId_zaposlenog" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Odeljenje" Relationship="ModelOsnovnaSkola.OdeljenjeNastavnikOdeljenje" FromRole="NastavnikOdeljenje" ToRole="Odeljenje" />
+          <Property Name="OdeljenjeId_odeljenja" Type="Int32" Nullable="false" />
+          <Property Name="Razredni" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="NastavnikNastavnikOdeljenje">
+          <End Type="ModelOsnovnaSkola.Nastavnik" Role="Nastavnik" Multiplicity="1" />
+          <End Type="ModelOsnovnaSkola.NastavnikOdeljenje" Role="NastavnikOdeljenje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nastavnik">
+              <PropertyRef Name="Id_zaposlenog" />
+            </Principal>
+            <Dependent Role="NastavnikOdeljenje">
+              <PropertyRef Name="NastavnikId_zaposlenog" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OdeljenjeNastavnikOdeljenje">
+          <End Type="ModelOsnovnaSkola.Odeljenje" Role="Odeljenje" Multiplicity="1" />
+          <End Type="ModelOsnovnaSkola.NastavnikOdeljenje" Role="NastavnikOdeljenje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Odeljenje">
+              <PropertyRef Name="Id_odeljenja" />
+            </Principal>
+            <Dependent Role="NastavnikOdeljenje">
+              <PropertyRef Name="OdeljenjeId_odeljenja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PredmetNastavnik">
+          <End Type="ModelOsnovnaSkola.Predmet" Role="Predmet" Multiplicity="0..1" />
+          <End Type="ModelOsnovnaSkola.Nastavnik" Role="Nastavnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Predmet">
+              <PropertyRef Name="Id_predmeta" />
+            </Principal>
+            <Dependent Role="Nastavnik">
+              <PropertyRef Name="PredmetId_predmeta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UciteljOdeljenje">
+          <End Type="ModelOsnovnaSkola.Ucitelj" Role="Ucitelj" Multiplicity="0..1" />
+          <End Type="ModelOsnovnaSkola.Odeljenje" Role="Odeljenje" Multiplicity="0..1" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelOsnovnaSkolaStoreContainer" CdmEntityContainer="ModelOsnovnaSkolaContainer">
+    <EntitySetMapping Name="Zaposlenici">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Zaposleni)">
+        <MappingFragment StoreEntitySet="Zaposlenici">
+          <ScalarProperty Name="Id_zaposlenog" ColumnName="Id_zaposlenog" />
+          <ScalarProperty Name="ime" ColumnName="ime" />
+          <ScalarProperty Name="prezime" ColumnName="prezime" />
+          <ScalarProperty Name="zvanje" ColumnName="zvanje" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Nastavnik)">
+        <MappingFragment StoreEntitySet="Zaposlenici_Nastavnik">
+          <ScalarProperty Name="Id_zaposlenog" ColumnName="Id_zaposlenog" />
+          <ScalarProperty Name="PredmetId_predmeta" ColumnName="PredmetId_predmeta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Ucitelj)">
+        <MappingFragment StoreEntitySet="Zaposlenici_Ucitelj">
+          <ScalarProperty Name="Id_zaposlenog" ColumnName="Id_zaposlenog" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kontrolna_tacka">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Kontrolna_tacka)">
+        <MappingFragment StoreEntitySet="Kontrolna_tacka">
+          <ScalarProperty Name="Id_kontrolne_tacke" ColumnName="Id_kontrolne_tacke" />
+          <ScalarProperty Name="zadatak" ColumnName="zadatak" />
+          <ScalarProperty Name="ZaposleniId_zaposlenog" ColumnName="ZaposleniId_zaposlenog" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Domaci)">
+        <MappingFragment StoreEntitySet="Kontrolna_tacka_Domaci">
+          <ScalarProperty Name="Id_kontrolne_tacke" ColumnName="Id_kontrolne_tacke" />
+          <ScalarProperty Name="dan_zadavanja" ColumnName="dan_zadavanja" />
+          <ScalarProperty Name="dan_predaje" ColumnName="dan_predaje" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Kontrolni)">
+        <MappingFragment StoreEntitySet="Kontrolna_tacka_Kontrolni">
+          <ScalarProperty Name="Id_kontrolne_tacke" ColumnName="Id_kontrolne_tacke" />
+          <ScalarProperty Name="datum_odrzavanja" ColumnName="datum_odrzavanja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Predavanja">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Predavanje)">
+        <MappingFragment StoreEntitySet="Predavanja">
+          <ScalarProperty Name="Id_predavanja" ColumnName="Id_predavanja" />
+          <ScalarProperty Name="opis" ColumnName="opis" />
+          <ScalarProperty Name="datum_odrzavanja" ColumnName="datum_odrzavanja" />
+          <ScalarProperty Name="OblastId_oblasti" ColumnName="OblastId_oblasti" />
+          <ScalarProperty Name="ZaposleniId_zaposlenog" ColumnName="ZaposleniId_zaposlenog" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Oblasti">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Oblast)">
+        <MappingFragment StoreEntitySet="Oblasti">
+          <ScalarProperty Name="Id_oblasti" ColumnName="Id_oblasti" />
+          <ScalarProperty Name="naziv" ColumnName="naziv" />
+          <ScalarProperty Name="PredmetId_predmeta" ColumnName="PredmetId_predmeta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cas">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Cas)">
+        <MappingFragment StoreEntitySet="Cas">
+          <ScalarProperty Name="Id_casa" ColumnName="Id_casa" />
+          <ScalarProperty Name="pocetak" ColumnName="pocetak" />
+          <ScalarProperty Name="kraj" ColumnName="kraj" />
+          <ScalarProperty Name="datum" ColumnName="datum" />
+          <ScalarProperty Name="OblastId_oblasti" ColumnName="OblastId_oblasti" />
+          <ScalarProperty Name="ZaposleniId_zaposlenog" ColumnName="ZaposleniId_zaposlenog" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Predmeti">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Predmet)">
+        <MappingFragment StoreEntitySet="Predmeti">
+          <ScalarProperty Name="Id_predmeta" ColumnName="Id_predmeta" />
+          <ScalarProperty Name="razred" ColumnName="razred" />
+          <ScalarProperty Name="naziv" ColumnName="naziv" />
+          <ScalarProperty Name="broj_oblasti" ColumnName="broj_oblasti" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Odeljenja">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Odeljenje)">
+        <MappingFragment StoreEntitySet="Odeljenja">
+          <ScalarProperty Name="Id_odeljenja" ColumnName="Id_odeljenja" />
+          <ScalarProperty Name="razred" ColumnName="razred" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ucenici">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Ucenik)">
+        <MappingFragment StoreEntitySet="Ucenici">
+          <ScalarProperty Name="Id_ucenika" ColumnName="Id_ucenika" />
+          <ScalarProperty Name="ime" ColumnName="ime" />
+          <ScalarProperty Name="prezime" ColumnName="prezime" />
+          <ScalarProperty Name="OdeljenjeId_odeljenja" ColumnName="OdeljenjeId_odeljenja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KontrolnaTackaCasovi">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Odrzava)">
+        <MappingFragment StoreEntitySet="KontrolnaTackaCasovi">
+          <ScalarProperty Name="Kontrolna_tackaId_kontrolne_tacke" ColumnName="Kontrolna_tackaId_kontrolne_tacke" />
+          <ScalarProperty Name="CasId_casa" ColumnName="CasId_casa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Imaju">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Ima)">
+        <MappingFragment StoreEntitySet="Imaju">
+          <ScalarProperty Name="OdeljenjeId_odeljenja" ColumnName="OdeljenjeId_odeljenja" />
+          <ScalarProperty Name="CasId_casa" ColumnName="CasId_casa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prisustva">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Prisustvo)">
+        <MappingFragment StoreEntitySet="Prisustva">
+          <ScalarProperty Name="UcenikId_ucenika" ColumnName="UcenikId_ucenika" />
+          <ScalarProperty Name="CasId_casa" ColumnName="CasId_casa" />
+          <ScalarProperty Name="ZaposleniId_zaposlenog" ColumnName="ZaposleniId_zaposlenog" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rade">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Radi)">
+        <MappingFragment StoreEntitySet="Rade">
+          <ScalarProperty Name="Kontrolna_tackaId_kontrolne_tacke" ColumnName="Kontrolna_tackaId_kontrolne_tacke" />
+          <ScalarProperty Name="UcenikId_ucenika" ColumnName="UcenikId_ucenika" />
+          <ScalarProperty Name="ZaposleniId_zaposlenog" ColumnName="ZaposleniId_zaposlenog" />
+          <ScalarProperty Name="ocena" ColumnName="ocena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NastavnikOdeljenjes">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.NastavnikOdeljenje)">
+        <MappingFragment StoreEntitySet="NastavnikOdeljenjes">
+          <ScalarProperty Name="NastavnikId_zaposlenog" ColumnName="NastavnikId_zaposlenog" />
+          <ScalarProperty Name="OdeljenjeId_odeljenja" ColumnName="OdeljenjeId_odeljenja" />
+          <ScalarProperty Name="Razredni" ColumnName="Razredni" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Pripada" TypeName="ModelOsnovnaSkola.Pripada" StoreEntitySet="Ucenici">
+      <EndProperty Name="Odeljenje">
+        <ScalarProperty Name="Id_odeljenja" ColumnName="Odeljenje_Id_odeljenja" />
+      </EndProperty>
+      <EndProperty Name="Ucenik">
+        <ScalarProperty Name="Id_ucenika" ColumnName="Id_ucenika" />
+      </EndProperty>
+      <Condition ColumnName="Odeljenje_Id_odeljenja" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UciteljOdeljenje" TypeName="ModelOsnovnaSkola.UciteljOdeljenje" StoreEntitySet="Odeljenja">
+      <EndProperty Name="Ucitelj">
+        <ScalarProperty Name="Id_zaposlenog" ColumnName="Ucitelj_Id_zaposlenog" />
+      </EndProperty>
+      <EndProperty Name="Odeljenje">
+        <ScalarProperty Name="Id_odeljenja" ColumnName="Id_odeljenja" />
+      </EndProperty>
+      <Condition ColumnName="Ucitelj_Id_zaposlenog" IsNull="false" />
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelOsnovnaSkolaStoreContainer" CdmEntityContainer="ModelOsnovnaSkolaContainer">
+    <EntitySetMapping Name="Zaposlenici">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Zaposleni)">
+        <MappingFragment StoreEntitySet="Zaposlenici">
+          <ScalarProperty Name="Id_zaposlenog" ColumnName="Id_zaposlenog" />
+          <ScalarProperty Name="ime" ColumnName="ime" />
+          <ScalarProperty Name="prezime" ColumnName="prezime" />
+          <ScalarProperty Name="zvanje" ColumnName="zvanje" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Nastavnik)">
+        <MappingFragment StoreEntitySet="Zaposlenici_Nastavnik">
+          <ScalarProperty Name="Id_zaposlenog" ColumnName="Id_zaposlenog" />
+          <ScalarProperty Name="PredmetId_predmeta" ColumnName="PredmetId_predmeta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Ucitelj)">
+        <MappingFragment StoreEntitySet="Zaposlenici_Ucitelj">
+          <ScalarProperty Name="Id_zaposlenog" ColumnName="Id_zaposlenog" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kontrolna_tacka">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Kontrolna_tacka)">
+        <MappingFragment StoreEntitySet="Kontrolna_tacka">
+          <ScalarProperty Name="Id_kontrolne_tacke" ColumnName="Id_kontrolne_tacke" />
+          <ScalarProperty Name="zadatak" ColumnName="zadatak" />
+          <ScalarProperty Name="ZaposleniId_zaposlenog" ColumnName="ZaposleniId_zaposlenog" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Domaci)">
+        <MappingFragment StoreEntitySet="Kontrolna_tacka_Domaci">
+          <ScalarProperty Name="Id_kontrolne_tacke" ColumnName="Id_kontrolne_tacke" />
+          <ScalarProperty Name="dan_zadavanja" ColumnName="dan_zadavanja" />
+          <ScalarProperty Name="dan_predaje" ColumnName="dan_predaje" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Kontrolni)">
+        <MappingFragment StoreEntitySet="Kontrolna_tacka_Kontrolni">
+          <ScalarProperty Name="Id_kontrolne_tacke" ColumnName="Id_kontrolne_tacke" />
+          <ScalarProperty Name="datum_odrzavanja" ColumnName="datum_odrzavanja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Predavanja">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Predavanje)">
+        <MappingFragment StoreEntitySet="Predavanja">
+          <ScalarProperty Name="Id_predavanja" ColumnName="Id_predavanja" />
+          <ScalarProperty Name="opis" ColumnName="opis" />
+          <ScalarProperty Name="datum_odrzavanja" ColumnName="datum_odrzavanja" />
+          <ScalarProperty Name="OblastId_oblasti" ColumnName="OblastId_oblasti" />
+          <ScalarProperty Name="ZaposleniId_zaposlenog" ColumnName="ZaposleniId_zaposlenog" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Oblasti">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Oblast)">
+        <MappingFragment StoreEntitySet="Oblasti">
+          <ScalarProperty Name="Id_oblasti" ColumnName="Id_oblasti" />
+          <ScalarProperty Name="naziv" ColumnName="naziv" />
+          <ScalarProperty Name="PredmetId_predmeta" ColumnName="PredmetId_predmeta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cas">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Cas)">
+        <MappingFragment StoreEntitySet="Cas">
+          <ScalarProperty Name="Id_casa" ColumnName="Id_casa" />
+          <ScalarProperty Name="pocetak" ColumnName="pocetak" />
+          <ScalarProperty Name="kraj" ColumnName="kraj" />
+          <ScalarProperty Name="datum" ColumnName="datum" />
+          <ScalarProperty Name="OblastId_oblasti" ColumnName="OblastId_oblasti" />
+          <ScalarProperty Name="ZaposleniId_zaposlenog" ColumnName="ZaposleniId_zaposlenog" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Predmeti">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Predmet)">
+        <MappingFragment StoreEntitySet="Predmeti">
+          <ScalarProperty Name="Id_predmeta" ColumnName="Id_predmeta" />
+          <ScalarProperty Name="razred" ColumnName="razred" />
+          <ScalarProperty Name="naziv" ColumnName="naziv" />
+          <ScalarProperty Name="broj_oblasti" ColumnName="broj_oblasti" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Odeljenja">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Odeljenje)">
+        <MappingFragment StoreEntitySet="Odeljenja">
+          <ScalarProperty Name="Id_odeljenja" ColumnName="Id_odeljenja" />
+          <ScalarProperty Name="razred" ColumnName="razred" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ucenici">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Ucenik)">
+        <MappingFragment StoreEntitySet="Ucenici">
+          <ScalarProperty Name="Id_ucenika" ColumnName="Id_ucenika" />
+          <ScalarProperty Name="ime" ColumnName="ime" />
+          <ScalarProperty Name="prezime" ColumnName="prezime" />
+          <ScalarProperty Name="OdeljenjeId_odeljenja" ColumnName="OdeljenjeId_odeljenja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KontrolnaTackaCasovi">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Odrzava)">
+        <MappingFragment StoreEntitySet="KontrolnaTackaCasovi">
+          <ScalarProperty Name="Kontrolna_tackaId_kontrolne_tacke" ColumnName="Kontrolna_tackaId_kontrolne_tacke" />
+          <ScalarProperty Name="CasId_casa" ColumnName="CasId_casa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Imaju">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Ima)">
+        <MappingFragment StoreEntitySet="Imaju">
+          <ScalarProperty Name="OdeljenjeId_odeljenja" ColumnName="OdeljenjeId_odeljenja" />
+          <ScalarProperty Name="CasId_casa" ColumnName="CasId_casa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prisustva">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Prisustvo)">
+        <MappingFragment StoreEntitySet="Prisustva">
+          <ScalarProperty Name="UcenikId_ucenika" ColumnName="UcenikId_ucenika" />
+          <ScalarProperty Name="CasId_casa" ColumnName="CasId_casa" />
+          <ScalarProperty Name="ZaposleniId_zaposlenog" ColumnName="ZaposleniId_zaposlenog" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rade">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Radi)">
+        <MappingFragment StoreEntitySet="Rade">
+          <ScalarProperty Name="Kontrolna_tackaId_kontrolne_tacke" ColumnName="Kontrolna_tackaId_kontrolne_tacke" />
+          <ScalarProperty Name="UcenikId_ucenika" ColumnName="UcenikId_ucenika" />
+          <ScalarProperty Name="ZaposleniId_zaposlenog" ColumnName="ZaposleniId_zaposlenog" />
+          <ScalarProperty Name="ocena" ColumnName="ocena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NastavnikOdeljenjes">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.NastavnikOdeljenje)">
+        <MappingFragment StoreEntitySet="NastavnikOdeljenjes">
+          <ScalarProperty Name="NastavnikId_zaposlenog" ColumnName="NastavnikId_zaposlenog" />
+          <ScalarProperty Name="OdeljenjeId_odeljenja" ColumnName="OdeljenjeId_odeljenja" />
+          <ScalarProperty Name="Razredni" ColumnName="Razredni" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Pripada" TypeName="ModelOsnovnaSkola.Pripada" StoreEntitySet="Ucenici">
+      <EndProperty Name="Odeljenje">
+        <ScalarProperty Name="Id_odeljenja" ColumnName="Odeljenje_Id_odeljenja" />
+      </EndProperty>
+      <EndProperty Name="Ucenik">
+        <ScalarProperty Name="Id_ucenika" ColumnName="Id_ucenika" />
+      </EndProperty>
+      <Condition ColumnName="Odeljenje_Id_odeljenja" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UciteljOdeljenje" TypeName="ModelOsnovnaSkola.UciteljOdeljenje" StoreEntitySet="Odeljenja">
+      <EndProperty Name="Ucitelj">
+        <ScalarProperty Name="Id_zaposlenog" ColumnName="Ucitelj_Id_zaposlenog" />
+      </EndProperty>
+      <EndProperty Name="Odeljenje">
+        <ScalarProperty Name="Id_odeljenja" ColumnName="Id_odeljenja" />
+      </EndProperty>
+      <Condition ColumnName="Ucitelj_Id_zaposlenog" IsNull="false" />
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

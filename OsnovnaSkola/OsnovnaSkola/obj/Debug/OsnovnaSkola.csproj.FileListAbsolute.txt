@@ -1,0 +1,14 @@
+C:\Users\Bozo\Desktop\Baze Specifikacije\OsnovnaSkola\OsnovnaSkola\bin\Debug\OsnovnaSkola.dll.config
+C:\Users\Bozo\Desktop\Baze Specifikacije\OsnovnaSkola\OsnovnaSkola\bin\Debug\OsnovnaSkola.dll
+C:\Users\Bozo\Desktop\Baze Specifikacije\OsnovnaSkola\OsnovnaSkola\bin\Debug\OsnovnaSkola.pdb
+C:\Users\Bozo\Desktop\Baze Specifikacije\OsnovnaSkola\OsnovnaSkola\bin\Debug\EntityFramework.dll
+C:\Users\Bozo\Desktop\Baze Specifikacije\OsnovnaSkola\OsnovnaSkola\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Bozo\Desktop\Baze Specifikacije\OsnovnaSkola\OsnovnaSkola\bin\Debug\System.Data.SqlClient.dll
+C:\Users\Bozo\Desktop\Baze Specifikacije\OsnovnaSkola\OsnovnaSkola\bin\Debug\EntityFramework.xml
+C:\Users\Bozo\Desktop\Baze Specifikacije\OsnovnaSkola\OsnovnaSkola\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Bozo\Desktop\Baze Specifikacije\OsnovnaSkola\OsnovnaSkola\bin\Debug\System.Data.SqlClient.xml
+C:\Users\Bozo\Desktop\Baze Specifikacije\OsnovnaSkola\OsnovnaSkola\obj\Debug\OsnovnaSkola.csproj.CoreCompileInputs.cache
+C:\Users\Bozo\Desktop\Baze Specifikacije\OsnovnaSkola\OsnovnaSkola\obj\Debug\OsnovnaSkola.csproj.CopyComplete
+C:\Users\Bozo\Desktop\Baze Specifikacije\OsnovnaSkola\OsnovnaSkola\obj\Debug\OsnovnaSkola.dll
+C:\Users\Bozo\Desktop\Baze Specifikacije\OsnovnaSkola\OsnovnaSkola\obj\Debug\OsnovnaSkola.pdb
+C:\Users\Bozo\Desktop\Baze Specifikacije\OsnovnaSkola\OsnovnaSkola\obj\Debug\OsnovnaSkola.csprojAssemblyReference.cache

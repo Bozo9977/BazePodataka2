@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{088422F3-5588-49F3-8C0A-1D08EDE26609}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OsnovnaSkola</RootNamespace>
+    <AssemblyName>OsnovnaSkola</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.SqlClient, Version=4.6.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.8.1\lib\net461\System.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cas.cs">
+      <DependentUpon>ModelOsnovnaSkola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\CasDAO.cs" />
+    <Compile Include="DataAccess\DomaciDAO.cs" />
+    <Compile Include="DataAccess\IRepository.cs" />
+    <Compile Include="DataAccess\KontrolniDAO.cs" />
+    <Compile Include="DataAccess\NastavnikDAO.cs" />
+    <Compile Include="DataAccess\OblastDAO.cs" />
+    <Compile Include="DataAccess\OdeljenjeDAO.cs" />
+    <Compile Include="DataAccess\PredavanjeDAO.cs" />
+    <Compile Include="DataAccess\PredmetDAO.cs" />
+    <Compile Include="DataAccess\RepoAccess.cs" />
+    <Compile Include="DataAccess\UcenikDAO.cs" />
+    <Compile Include="DataAccess\UciteljDAO.cs" />
+    <Compile Include="DataAccess\ZaposleniciDAO.cs" />
+    <Compile Include="Domaci.cs">
+      <DependentUpon>ModelOsnovnaSkola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ima.cs">
+      <DependentUpon>ModelOsnovnaSkola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Kontrolna_tacka.cs">
+      <DependentUpon>ModelOsnovnaSkola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Kontrolni.cs">
+      <DependentUpon>ModelOsnovnaSkola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelOsnovnaSkola.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelOsnovnaSkola.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelOsnovnaSkola.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelOsnovnaSkola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelOsnovnaSkola.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelOsnovnaSkola.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Nastavnik.cs">
+      <DependentUpon>ModelOsnovnaSkola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NastavnikOdeljenje.cs">
+      <DependentUpon>ModelOsnovnaSkola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Oblast.cs">
+      <DependentUpon>ModelOsnovnaSkola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Odeljenje.cs">
+      <DependentUpon>ModelOsnovnaSkola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Odrzava.cs">
+      <DependentUpon>ModelOsnovnaSkola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Predavanje.cs">
+      <DependentUpon>ModelOsnovnaSkola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Predmet.cs">
+      <DependentUpon>ModelOsnovnaSkola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Prisustvo.cs">
+      <DependentUpon>ModelOsnovnaSkola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Radi.cs">
+      <DependentUpon>ModelOsnovnaSkola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ucenik.cs">
+      <DependentUpon>ModelOsnovnaSkola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ucitelj.cs">
+      <DependentUpon>ModelOsnovnaSkola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Zaposleni.cs">
+      <DependentUpon>ModelOsnovnaSkola.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="ModelOsnovnaSkola.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelOsnovnaSkola.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="ModelOsnovnaSkola.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelOsnovnaSkola.Context.cs</LastGenOutput>
+      <DependentUpon>ModelOsnovnaSkola.edmx</DependentUpon>
+    </None>
+    <None Include="ModelOsnovnaSkola.edmx.diagram">
+      <DependentUpon>ModelOsnovnaSkola.edmx</DependentUpon>
+    </None>
+    <None Include="ModelOsnovnaSkola.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelOsnovnaSkola.cs</LastGenOutput>
+      <DependentUpon>ModelOsnovnaSkola.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModelOsnovnaSkola.edmx.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
+</Project>

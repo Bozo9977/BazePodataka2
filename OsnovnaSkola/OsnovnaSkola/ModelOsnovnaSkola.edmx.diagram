@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="28fbda95b3ec4775aed521afa1c93401" Name="Diagram1" ZoomLevel="81" >
+        <EntityTypeShape EntityType="ModelOsnovnaSkola.Zaposleni" Width="1.5" PointX="22" PointY="27.25" />
+        <EntityTypeShape EntityType="ModelOsnovnaSkola.Ucitelj" Width="1.5" PointX="24" PointY="30.75" />
+        <InheritanceConnector EntityType="ModelOsnovnaSkola.Ucitelj" />
+        <EntityTypeShape EntityType="ModelOsnovnaSkola.Nastavnik" Width="1.5" PointX="19.375" PointY="30.75" IsExpanded="true" />
+        <InheritanceConnector EntityType="ModelOsnovnaSkola.Nastavnik" />
+        <EntityTypeShape EntityType="ModelOsnovnaSkola.Kontrolna_tacka" Width="1.5" PointX="36.5" PointY="22.5" />
+        <EntityTypeShape EntityType="ModelOsnovnaSkola.Domaci" Width="1.5" PointX="33" PointY="19.375" />
+        <InheritanceConnector EntityType="ModelOsnovnaSkola.Domaci" />
+        <EntityTypeShape EntityType="ModelOsnovnaSkola.Kontrolni" Width="1.5" PointX="40.375" PointY="19.5" />
+        <InheritanceConnector EntityType="ModelOsnovnaSkola.Kontrolni" />
+        <EntityTypeShape EntityType="ModelOsnovnaSkola.Predavanje" Width="1.5" PointX="40.875" PointY="31.25" />
+        <EntityTypeShape EntityType="ModelOsnovnaSkola.Oblast" Width="1.5" PointX="46.25" PointY="29.625" />
+        <EntityTypeShape EntityType="ModelOsnovnaSkola.Cas" Width="1.5" PointX="52.125" PointY="29.375" />
+        <EntityTypeShape EntityType="ModelOsnovnaSkola.Predmet" Width="1.5" PointX="46.25" PointY="44" />
+        <EntityTypeShape EntityType="ModelOsnovnaSkola.Odeljenje" Width="1.5" PointX="24.375" PointY="35.875" />
+        <EntityTypeShape EntityType="ModelOsnovnaSkola.Ucenik" Width="1.5" PointX="30.5" PointY="43.5" />
+        <AssociationConnector Association="ModelOsnovnaSkola.Zadaje" />
+        <AssociationConnector Association="ModelOsnovnaSkola.Vezana" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="ModelOsnovnaSkola.PredmetOblast" />
+        <AssociationConnector Association="ModelOsnovnaSkola.Pripada" />
+        <AssociationConnector Association="ModelOsnovnaSkola.Predjena" />
+        <EntityTypeShape EntityType="ModelOsnovnaSkola.Odrzava" Width="1.5" PointX="46.375" PointY="23.125" />
+        <AssociationConnector Association="ModelOsnovnaSkola.Kontrolna_tackaOdrzava" />
+        <AssociationConnector Association="ModelOsnovnaSkola.CasOdrzava" />
+        <EntityTypeShape EntityType="ModelOsnovnaSkola.Ima" Width="1.5" PointX="49.125" PointY="35.375" />
+        <AssociationConnector Association="ModelOsnovnaSkola.OdeljenjeIma" />
+        <AssociationConnector Association="ModelOsnovnaSkola.CasIma" />
+        <EntityTypeShape EntityType="ModelOsnovnaSkola.Prisustvo" Width="1.5" PointX="36.75" PointY="42.5" />
+        <AssociationConnector Association="ModelOsnovnaSkola.UcenikPrisustvo" />
+        <AssociationConnector Association="ModelOsnovnaSkola.CasPrisustvo" />
+        <EntityTypeShape EntityType="ModelOsnovnaSkola.Radi" Width="1.5" PointX="34.5" PointY="39.125" />
+        <AssociationConnector Association="ModelOsnovnaSkola.Kontrolna_tackaRadi" />
+        <AssociationConnector Association="ModelOsnovnaSkola.UcenikRadi" />
+        <AssociationConnector Association="ModelOsnovnaSkola.Drzi" />
+        <AssociationConnector Association="ModelOsnovnaSkola.Evidentira" />
+        <AssociationConnector Association="ModelOsnovnaSkola.ZaposleniRadi" />
+        <AssociationConnector Association="ModelOsnovnaSkola.ZaposleniPredavanje" />
+        <EntityTypeShape EntityType="ModelOsnovnaSkola.NastavnikOdeljenje" Width="1.5" PointX="18.25" PointY="35.75" />
+        <AssociationConnector Association="ModelOsnovnaSkola.NastavnikNastavnikOdeljenje" />
+        <AssociationConnector Association="ModelOsnovnaSkola.OdeljenjeNastavnikOdeljenje" />
+        <AssociationConnector Association="ModelOsnovnaSkola.PredmetNastavnik" />
+        <AssociationConnector Association="ModelOsnovnaSkola.UciteljOdeljenje" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
