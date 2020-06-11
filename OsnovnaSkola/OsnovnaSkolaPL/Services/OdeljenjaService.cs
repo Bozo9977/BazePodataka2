@@ -110,5 +110,21 @@ namespace OsnovnaSkolaPL.Services
         {
             return dao.ValidateUciteljExistance(id);
         }
+
+        public List<OdeljenjeIM> GetOdeljenjeByRazred(short razred)
+        {
+            List<Odeljenje> lista = dao.GetAll().Where(x=>x.razred == razred).ToList();
+            List<OdeljenjeIM> retVal = new List<OdeljenjeIM>();
+            foreach(var item in lista)
+            {
+                if (item.Ucitelj != null)
+                    retVal.Add(new OdeljenjeIM() { razred = item.razred, Id_odeljenja = item.Id_odeljenja, Razredni = item.Ucitelj.ime });
+                else if (item.NastavnikOdeljenjes.Count != 0)
+                    retVal.Add(new OdeljenjeIM() { razred = item.razred, Id_odeljenja = item.Id_odeljenja, Razredni = item.NastavnikOdeljenjes.ToList().Find(n => n.Razredni == true).Nastavnik.ime });
+                else
+                    retVal.Add(new OdeljenjeIM() { razred = item.razred, Id_odeljenja = item.Id_odeljenja, Razredni = "" });
+            }
+            return retVal;
+        }
     }
 }

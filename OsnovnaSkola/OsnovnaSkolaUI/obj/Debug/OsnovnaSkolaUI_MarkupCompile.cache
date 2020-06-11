@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Bozo\Desktop\Baze Specifikacije\OsnovnaSkola\OsnovnaSkolaUI\obj\Debug\
+C:\Users\Bozo\Desktop\Baze Specifikacije\bazeProjekat\BazePodataka2\OsnovnaSkola\OsnovnaSkolaUI\obj\Debug\
 OsnovnaSkolaUI
 none
 false
 DEBUG;TRACE
-C:\Users\Bozo\Desktop\Baze Specifikacije\OsnovnaSkola\OsnovnaSkolaUI\App.xaml
-9-965908548
+C:\Users\Bozo\Desktop\Baze Specifikacije\bazeProjekat\BazePodataka2\OsnovnaSkola\OsnovnaSkolaUI\App.xaml
+11588182502
 
-241604009019
-20-1347350559
-MainWindow.xaml;Views\AddOblastWindow.xaml;Views\AddOdeljenjeWindow.xaml;Views\AddPredmetWindow.xaml;Views\AddRazredniWindow.xaml;Views\AddUcenikWindow.xaml;Views\AddZaposleniWindow.xaml;Views\LoginWindow.xaml;Views\OblastiPredmetaWindow.xaml;
+281941335488
+20-1108963240
+MainWindow.xaml;Views\AddOblastWindow.xaml;Views\AddOdeljenjeWindow.xaml;Views\AddPredmetWindow.xaml;Views\AddRazredniWindow.xaml;Views\AddUcenikWindow.xaml;Views\AddZaposleniWindow.xaml;Views\LoginWindow.xaml;Views\OblastiPredmetaWindow.xaml;Views\UcenikOdeljenjeWindow.xaml;Views\ZaposleniPredmetWindow.xaml;
 
 False
 

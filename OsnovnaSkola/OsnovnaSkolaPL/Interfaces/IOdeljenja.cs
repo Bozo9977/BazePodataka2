@@ -28,5 +28,7 @@ namespace OsnovnaSkolaPL.Interfaces
         bool DeleteOdeljenje(OdeljenjeIM odeljenje);
         [OperationContract]
         bool ValidateUciteljExistance(int id);
+        [OperationContract]
+        List<OdeljenjeIM> GetOdeljenjeByRazred(short razred);
     }
 }

@@ -1,0 +1,50 @@
+﻿<Window x:Class="OsnovnaSkolaUI.Views.UcenikOdeljenjeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OsnovnaSkolaUI.Views"
+        mc:Ignorable="d"
+        Title="Dodaj Odeljenje" Height="450" Width="711.5" WindowStartupLocation="CenterScreen">
+    <Grid Background="Black">
+        <DataGrid  ItemsSource="{Binding Odeljenja, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedItem="{Binding SelectedOdeljenje}" ColumnWidth="*" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,0,0,97">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" TextBlock.TextAlignment="Center" Binding="{Binding Id_odeljenja}" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap" />
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="Razred" TextBlock.TextAlignment="Center" Binding="{Binding razred}" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap" />
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+
+                <DataGridTextColumn Header="Razredni" TextBlock.TextAlignment="Center" Binding="{Binding Razredni}" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap" />
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Dodaj" Command="{Binding DodajOdeljenjeCommand}" FontSize="18" Background="Transparent" Foreground="Gold" Margin="249,369,301,0" VerticalAlignment="Top" Height="40"/>
+        <!--<Button Content="Obrisi" Command="{Binding DeleteOblastCommand}" FontSize="18" Background="Transparent" Foreground="Gold" Margin="344,356,206,0" VerticalAlignment="Top" Height="40"/>-->
+
+
+    </Grid>
+</Window>

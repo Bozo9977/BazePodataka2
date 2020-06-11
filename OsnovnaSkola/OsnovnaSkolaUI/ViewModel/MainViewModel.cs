@@ -30,6 +30,8 @@ namespace OsnovnaSkolaUI.ViewModel
         public MyICommand AddPredmetCommand { get; set; }
         public MyICommand AddOblastCommand { get; set; }
         public MyICommand ChangeOblastCommand { get; set; }
+        public MyICommand UcenikOdeljenjeCommand { get; set; }
+        public MyICommand ZaposleniPredmetCommand { get; set; }
 
         #endregion
 
@@ -142,10 +144,12 @@ namespace OsnovnaSkolaUI.ViewModel
             AddZaposleniCommand = new MyICommand(OnAddZaposleni);
             ChangeInfoCommand = new MyICommand(OnChangeZaposleni);
             DeleteZaposleniCommand = new MyICommand(OnDeleteZaposleni);
+            ZaposleniPredmetCommand = new MyICommand(OnDodajPredmet);
 
             AddUcenikCommand = new MyICommand(OnAddUcenik);
             ChangeUcenikCommand = new MyICommand(OnChangeUcenik);
             DeleteUcenikCommand = new MyICommand(OnDeleteUcenik);
+            UcenikOdeljenjeCommand = new MyICommand(OnDodajOdeljenje);
 
             AddOdeljenjeCommand = new MyICommand(OnAddOdeljenje);
             ChangeOdeljenjeCommand = new MyICommand(OnChangeOdeljenje);
@@ -156,6 +160,12 @@ namespace OsnovnaSkolaUI.ViewModel
             AddPredmetCommand = new MyICommand(OnAddPredmet);
             AddOblastCommand = new MyICommand(OnAddOblast);
             ChangeOblastCommand = new MyICommand(OnChangeOblast);
+        }
+
+        public void OnDodajPredmet()
+        {
+            new ZaposleniPredmetWindow(SelectedZaposleni).ShowDialog();
+            
         }
 
         public void OnAddZaposleni()
@@ -175,6 +185,14 @@ namespace OsnovnaSkolaUI.ViewModel
             new AddUcenikWindow(null).ShowDialog();
             OnChange();
         }
+
+        public void OnDodajOdeljenje()
+        {
+            new UcenikOdeljenjeWindow(SelectedUcenik).ShowDialog();
+            OnChange();
+        }
+
+
 
         public void OnChangeUcenik()
         {

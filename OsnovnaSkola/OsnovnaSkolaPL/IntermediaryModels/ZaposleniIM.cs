@@ -20,5 +20,7 @@ namespace OsnovnaSkolaPL.IntermediaryModels
         public string zvanje { get; set; }
         [DataMember]
         public bool Ucitelj { get; set; }
+        [DataMember]
+        public bool Nastavnik { get; set; }
     }
 }

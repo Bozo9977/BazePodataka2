@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" WindowStartupLocation="CenterScreen"  Height="662.65" Width="1359" ResizeMode="NoResize" WindowState="Maximized">
     <Grid Background="Black">
-        <!--<GroupBox Header="Ulogovan:" Foreground="gold" BorderBrush="gold" Margin="0,0,1131,403">-->
         <Grid>
             <Label Content="Ime" FontWeight="Bold" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="gold"/>
             <TextBlock x:Name="Ime" HorizontalAlignment="Left" Margin="10,26,0,0" TextWrapping="Wrap" Text="{Binding LoggedIn.ime}" VerticalAlignment="Top" Width="124" Foreground="#FFFBFB9F"/>
@@ -19,7 +18,6 @@
             <TextBlock x:Name="Zvanje" HorizontalAlignment="Left" Margin="10,115,0,0" TextWrapping="Wrap" Text="{Binding LoggedIn.zvanje}" VerticalAlignment="Top" Width="124" Foreground="#FFFBFB9F"/>
             <Button Content="Change" Command="{Binding ChangeInfoCommand}" Visibility="{Binding IsAdmin}" Background="Black" HorizontalAlignment="Center" Margin="10,136,1211,0" VerticalAlignment="Top" Width="132" FontSize="22" Foreground="#FFFBFB9F" BorderBrush="gold" Height="40"/>
         </Grid>
-        <!--</GroupBox>-->
 
 
 
@@ -68,6 +66,15 @@
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
 
+                        <DataGridTemplateColumn Header="Dodaj predmet" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button IsEnabled="{Binding Nastavnik}" Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}, Path=DataContext.ZaposleniPredmetCommand}" CommandParameter="{Binding}">Dodaj Predmet</Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
@@ -105,6 +112,15 @@
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
+
+                        <DataGridTemplateColumn Header="Dodaj odeljenje">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}, Path=DataContext.UcenikOdeljenjeCommand}" CommandParameter="{Binding}">Dodaj odeljenje</Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>

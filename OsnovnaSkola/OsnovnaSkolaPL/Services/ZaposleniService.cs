@@ -17,6 +17,11 @@ namespace OsnovnaSkolaPL.Services
         string adminIme = "admin";
         string adminPrezime = "admin";
 
+        public bool AddPredmetToZaposleni(ZaposleniIM zaposleni, PredmetIM predmet)
+        {
+            return dao.AddPredmetToZaposleni(zaposleni.Id_zaposlenog, predmet.Id_predmeta);
+        }
+
         public bool AddZaposleni(ZaposleniIM zaposleni)
         {
             Zaposleni z = null;
@@ -70,7 +75,8 @@ namespace OsnovnaSkolaPL.Services
                         zvanje = item.zvanje,
                         prezime = item.prezime,
                         Id_zaposlenog = item.Id_zaposlenog,
-                        Ucitelj = (item is Ucitelj)
+                        Ucitelj = (item is Ucitelj),
+                        Nastavnik = !(item is Ucitelj)
                     }) ;
                 }
                 return retVal;
@@ -130,6 +136,11 @@ namespace OsnovnaSkolaPL.Services
                 return admin;
             }
                 
+        }
+
+        public bool ValidatePredmetAdding(int nastavnikID)
+        {
+            return dao.ValidatePredmetAdding(nastavnikID);
         }
     }
 }

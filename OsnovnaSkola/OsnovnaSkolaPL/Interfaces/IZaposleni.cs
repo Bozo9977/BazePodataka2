@@ -22,5 +22,9 @@ namespace OsnovnaSkolaPL.Interfaces
         bool DeleteZaposleni(int idZaposlenog);
         [OperationContract]
         bool ChangeZaposleni(ZaposleniIM zaposleniToChange);
+        [OperationContract]
+        bool AddPredmetToZaposleni(ZaposleniIM zaposleni, PredmetIM predmet);
+        [OperationContract]
+        bool ValidatePredmetAdding(int nastavnikID);
     }
 }
