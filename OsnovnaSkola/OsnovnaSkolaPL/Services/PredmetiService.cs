@@ -25,6 +25,20 @@ namespace OsnovnaSkolaPL.Services
             return dao.Insert(toAdd);
         }
 
+        public bool ChangePredmet(PredmetIM predmet)
+        {
+            Predmet p = dao.FindById(predmet.Id_predmeta);
+            p.naziv = predmet.naziv;
+            p.broj_oblasti = predmet.broj_oblasti;
+            p.razred = predmet.razred;
+            return dao.Update(p);
+        }
+
+        public bool DeletePredmet(int id)
+        {
+            return dao.Delete(id);
+        }
+
         public List<OblastIM> GetOblastiForPRedmet(int id)
         {
             List<Oblast> lista = dao.GetOblastiForPredmet(id);
@@ -44,6 +58,20 @@ namespace OsnovnaSkolaPL.Services
             {
                 retVal.Add(new PredmetIM() { naziv = item.naziv, razred = item.razred, broj_oblasti = item.broj_oblasti, Id_predmeta = item.Id_predmeta });
             }
+            return retVal;
+        }
+
+        public List<PredmetIM> GetPredmetiForZaposleni(int id)
+        {
+            List<Predmet> lista = dao.GetPredmetiForZaposleni(id);
+            List<PredmetIM> retVal = new List<PredmetIM>();
+
+            foreach(var item in lista)
+            {
+                if(item!=null)
+                    retVal.Add(new PredmetIM() { broj_oblasti = item.broj_oblasti, Id_predmeta = item.Id_predmeta, naziv = item.naziv, razred = item.razred });
+            }
+
             return retVal;
         }
     }

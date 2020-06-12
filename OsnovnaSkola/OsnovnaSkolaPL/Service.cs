@@ -16,6 +16,7 @@ namespace OsnovnaSkolaPL
         private static ServiceHost OdeljenjaServiceHost;
         private static ServiceHost PredmetiServiceHost;
         private static ServiceHost OblastiServiceHost;
+        private static ServiceHost PredavanjaServiceHost;
 
         public Service()
         {
@@ -42,6 +43,9 @@ namespace OsnovnaSkolaPL
 
             OblastiServiceHost = new ServiceHost(typeof(OblastService));
             OblastiServiceHost.AddServiceEndpoint(typeof(IOblast), binding, new Uri("net.tcp://localhost:11001/IOblast"));
+
+            PredavanjaServiceHost = new ServiceHost(typeof(PredavanjaService));
+            PredavanjaServiceHost.AddServiceEndpoint(typeof(IPredavanja), binding, new Uri("net.tcp://localhost:11001/IPredavanja"));
         }
 
         public void Open()
@@ -51,6 +55,7 @@ namespace OsnovnaSkolaPL
             OdeljenjaServiceHost.Open();
             PredmetiServiceHost.Open();
             OblastiServiceHost.Open();
+            PredavanjaServiceHost.Open();
             Console.WriteLine("Service hosts open at: " + DateTime.Now);
         }
 
@@ -61,6 +66,7 @@ namespace OsnovnaSkolaPL
             OdeljenjaServiceHost.Close();
             PredmetiServiceHost.Close();
             OblastiServiceHost.Close();
+            PredavanjaServiceHost.Close();
             Console.WriteLine("Service hosts closing at: " + DateTime.Now);
         }
     }

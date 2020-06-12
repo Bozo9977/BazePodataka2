@@ -126,6 +126,7 @@ namespace OsnovnaSkolaUI.ViewModel
             }
 
             AddPredmetCommand = new MyICommand(OnAddPredmet);
+            ChangePredmetCommand = new MyICommand(OnChangePredmet);
         }
 
 
@@ -148,6 +149,36 @@ namespace OsnovnaSkolaUI.ViewModel
             else
             {
                 if (Channel.Instance.PredmetiProxy.AddPredmet(NoviPredmet))
+                {
+                    Window.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Greška prilikom dodavanja.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        public void OnChangePredmet()
+        {
+            ErrorNaziv = ErrorRazred = ErrorBrojOblasti = "";
+
+            if (String.IsNullOrEmpty(NoviPredmet.naziv))
+            {
+                ErrorNaziv = "Naziv ne može ostati prazan.";
+            }
+            else if (NoviPredmet.razred <= 0 || NoviPredmet.razred > 8)
+            {
+                ErrorRazred = "Razred mora biti u opsegu [1-8].";
+            }
+            else if (NoviPredmet.broj_oblasti < 0)
+            {
+                ErrorBrojOblasti = "Broj oblasti mora biti pozitivan broj.";
+            }
+            else
+            {
+                //NoviPredmet.razred
+                if (Channel.Instance.PredmetiProxy.ChangePredmet(NoviPredmet))
                 {
                     Window.Close();
                 }

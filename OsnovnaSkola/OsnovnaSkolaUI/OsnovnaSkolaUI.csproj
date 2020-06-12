@@ -73,6 +73,7 @@
     <Compile Include="LoggedInZaposleni.cs" />
     <Compile Include="ViewModel\AddOblastViewModel.cs" />
     <Compile Include="ViewModel\AddOdeljenjeViewModel.cs" />
+    <Compile Include="ViewModel\AddPredavanjeViewModel.cs" />
     <Compile Include="ViewModel\AddPredmetViewModel.cs" />
     <Compile Include="ViewModel\AddRazredniViewModel.cs" />
     <Compile Include="ViewModel\AddUcenikViewModel.cs" />
@@ -87,6 +88,9 @@
     </Compile>
     <Compile Include="Views\AddOdeljenjeWindow.xaml.cs">
       <DependentUpon>AddOdeljenjeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddPRedavanjeWindow.xaml.cs">
+      <DependentUpon>AddPRedavanjeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AddPredmetWindow.xaml.cs">
       <DependentUpon>AddPredmetWindow.xaml</DependentUpon>
@@ -129,6 +133,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AddOdeljenjeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddPRedavanjeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

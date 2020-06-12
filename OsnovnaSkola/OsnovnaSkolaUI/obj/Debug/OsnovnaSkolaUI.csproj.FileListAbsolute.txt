@@ -92,3 +92,5 @@ C:\Users\Bozo\Desktop\Baze Specifikacije\bazeProjekat\BazePodataka2\OsnovnaSkola
 C:\Users\Bozo\Desktop\Baze Specifikacije\bazeProjekat\BazePodataka2\OsnovnaSkola\OsnovnaSkolaUI\obj\Debug\Views\UcenikOdeljenjeWindow.baml
 C:\Users\Bozo\Desktop\Baze Specifikacije\bazeProjekat\BazePodataka2\OsnovnaSkola\OsnovnaSkolaUI\obj\Debug\Views\ZaposleniPredmetWindow.g.cs
 C:\Users\Bozo\Desktop\Baze Specifikacije\bazeProjekat\BazePodataka2\OsnovnaSkola\OsnovnaSkolaUI\obj\Debug\Views\ZaposleniPredmetWindow.baml
+C:\Users\Bozo\Desktop\Baze Specifikacije\bazeProjekat\BazePodataka2\OsnovnaSkola\OsnovnaSkolaUI\obj\Debug\Views\AddPRedavanjeWindow.g.cs
+C:\Users\Bozo\Desktop\Baze Specifikacije\bazeProjekat\BazePodataka2\OsnovnaSkola\OsnovnaSkolaUI\obj\Debug\Views\AddPRedavanjeWindow.baml

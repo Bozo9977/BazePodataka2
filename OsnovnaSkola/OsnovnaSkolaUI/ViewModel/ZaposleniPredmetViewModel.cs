@@ -62,6 +62,18 @@ namespace OsnovnaSkolaUI.ViewModel
                         Window.Close();
                     }
                 }
+                else
+                {
+                    if (Channel.Instance.ZaposleniProxy.AddPredmetToZaposleni(SelectedZaposleni, SelectedPredmet))
+                    {
+                        MessageBox.Show("Predmet dodat uspešno.", "Uspeh!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Greška prilikom dodavanja.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    Window.Close();
+                }
 
             }
             else

@@ -37,6 +37,7 @@ namespace OsnovnaSkola.DataAccess
         {
             using (var db = new ModelOsnovnaSkolaContainer())
             {
+                Nastavnik n = (db.Zaposlenici.Find(zaposleniID) as Nastavnik);
                 return (db.Zaposlenici.Find(zaposleniID) as Nastavnik).Predmet != null;
             }
         }

@@ -42,8 +42,9 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Izmeni" Command="{Binding ChangeOblastCommand}" FontSize="18" Background="Transparent" Foreground="Gold" Margin="185,356,365,0" VerticalAlignment="Top" Height="40"/>
-        <Button Content="Obrisi" Command="{Binding DeleteOblastCommand}" FontSize="18" Background="Transparent" Foreground="Gold" Margin="344,356,206,0" VerticalAlignment="Top" Height="40"/>
+        <Button Visibility="{Binding IzmenaOblasti}" Content="Izmeni" Command="{Binding ChangeOblastCommand}" FontSize="18" Background="Transparent" Foreground="Gold" Margin="185,356,365,0" VerticalAlignment="Top" Height="40"/>
+        <Button Visibility="{Binding IzmenaOblasti}" Content="Obrisi" Command="{Binding DeleteOblastCommand}" FontSize="18" Background="Transparent" Foreground="Gold" Margin="344,356,206,0" VerticalAlignment="Top" Height="40"/>
+        <Button Visibility="{Binding CreatingPredavanje}" Content="Izaberi Oblast" Command="{Binding CreatePredavanjeCommand}" FontSize="18" Background="Transparent" Foreground="Gold" Margin="271,356,279,0" VerticalAlignment="Top" Height="40"/>
 
 
     </Grid>

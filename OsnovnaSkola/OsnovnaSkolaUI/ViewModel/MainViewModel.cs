@@ -32,13 +32,19 @@ namespace OsnovnaSkolaUI.ViewModel
         public MyICommand ChangeOblastCommand { get; set; }
         public MyICommand UcenikOdeljenjeCommand { get; set; }
         public MyICommand ZaposleniPredmetCommand { get; set; }
+        public MyICommand DeletePredmetCommand { get; set; }
+        public MyICommand ChangePredmetCommand { get; set; }
+        public MyICommand CreatePredavanjeCommand { get; set; }
+        public MyICommand ChangePredavanjeCommand { get; set; }
+        public MyICommand DeletePredavanjeCommand { get; set; }
 
         #endregion
 
-
+        #region Props
         public Window Window { get; set; }
         public string IsAdmin { get; set; }
         public string  AuthorizeAdmin { get; set; }
+        public string  AuthorizeZaposleni { get; set; }
         public ZaposleniIM SelectedZaposleni { get; set; }
 
         List<ZaposleniIM> zaposleni { get; set; }
@@ -70,6 +76,20 @@ namespace OsnovnaSkolaUI.ViewModel
             }
         }
 
+        List<PredavanjeIM> predavanja;
+        public List<PredavanjeIM> Predavanja 
+        {
+            get
+            {
+                return predavanja;
+            }
+            set
+            {
+                predavanja = value;
+                OnPropertyChanged("Predavanja");
+            }
+        }
+        public PredavanjeIM SelectedPredavanje { get; set; }
         List<OdeljenjeIM> odeljenja { get; set; }
         public List<OdeljenjeIM> Odeljenja 
         {
@@ -113,7 +133,7 @@ namespace OsnovnaSkolaUI.ViewModel
             }
         }
 
-
+        #endregion
 
         public MainViewModel()
         {
@@ -122,22 +142,16 @@ namespace OsnovnaSkolaUI.ViewModel
             {
                 IsAdmin = "Visible";
                 AuthorizeAdmin = "Hidden";
+                AuthorizeZaposleni = "Visible";
+                OnZhangeZaposleni();
             }
             else
             {
                 IsAdmin = "Hidden";
                 AuthorizeAdmin = "Visible";
-            }
-
-            try
-            {
+                AuthorizeZaposleni = "Hidden";
                 OnChange();
             }
-            catch (Exception e)
-            {
-                Console.WriteLine("Message: \n"+e.Message + "Trace: \n"+e.StackTrace);
-            }
-
             
 
 
@@ -158,16 +172,99 @@ namespace OsnovnaSkolaUI.ViewModel
             DeleteOdeljenjeCommand = new MyICommand(OnDeleteOdeljenje);
 
             AddPredmetCommand = new MyICommand(OnAddPredmet);
+            DeletePredmetCommand = new MyICommand(OnDeletePredmet);
+            ChangePredmetCommand = new MyICommand(OnChangePredmet);
             AddOblastCommand = new MyICommand(OnAddOblast);
             ChangeOblastCommand = new MyICommand(OnChangeOblast);
+
+            CreatePredavanjeCommand = new MyICommand(OnCreatePredavanje);
+            ChangePredavanjeCommand = new MyICommand(OnChangePredavanje);
+            DeletePredavanjeCommand = new MyICommand(OnDeletePredavanje);
         }
 
         public void OnDodajPredmet()
         {
             new ZaposleniPredmetWindow(SelectedZaposleni).ShowDialog();
-            
         }
 
+        public void OnDeletePredmet()
+        {
+            if (SelectedPredmet != null)
+            {
+                if (Channel.Instance.PredmetiProxy.DeletePredmet(SelectedPredmet.Id_predmeta))
+                {
+                    MessageBox.Show("Predmet obrisan.", "Uspeh!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    OnChange();
+                }
+                else
+                {
+                    MessageBox.Show("Greška prilikom brisanja.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Prvo izaberite predmet.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        public void OnCreatePredavanje()
+        {
+            if (SelectedPredmet != null)
+            {
+                new OblastiPredmetaWindow(SelectedPredmet, true).ShowDialog();
+                OnZhangeZaposleni();
+            }
+            else
+            {
+                MessageBox.Show("Prvo izaberite predmet.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        public void OnChangePredavanje()
+        {
+            if (SelectedPredavanje != null)
+            {
+                new AddPRedavanjeWindow(null, SelectedPredavanje).ShowDialog();
+                OnZhangeZaposleni();
+            }
+            else
+            {
+                MessageBox.Show("Prvo izaberite predavanje.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        public void OnDeletePredavanje()
+        {
+            if (SelectedPredavanje != null)
+            {
+
+                if (Channel.Instance.PredavanjaProxy.DeletePredavanje(SelectedPredavanje))
+                {
+                    MessageBox.Show("Predavanje obrisano.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Greška pri uklanjanju.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                OnZhangeZaposleni();
+            }
+            else
+            {
+                MessageBox.Show("Prvo izaberite predavanje.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+        public void OnChangePredmet()
+        {
+            if (SelectedPredmet != null)
+            {
+                new AddPredmetWindow(SelectedPredmet).ShowDialog();
+                OnChange();
+            }
+            else
+            {
+                MessageBox.Show("Prvo izaberite predmet.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
         public void OnAddZaposleni()
         {
             new AddZaposleniWindow(false).ShowDialog();
@@ -305,7 +402,7 @@ namespace OsnovnaSkolaUI.ViewModel
 
         public void OnChangeOblast()
         {
-            new OblastiPredmetaWindow(SelectedPredmet).ShowDialog();
+            new OblastiPredmetaWindow(SelectedPredmet, false).ShowDialog();
             OnChange();
         }
         public void OnChange()
@@ -325,6 +422,11 @@ namespace OsnovnaSkolaUI.ViewModel
             
         }
 
+        public void OnZhangeZaposleni()
+        {
+            Predmeti = Channel.Instance.PredmetiProxy.GetPredmetiForZaposleni(LoggedInZaposleni.Instance.Id_zaposlenog);
+            Predavanja = Channel.Instance.PredavanjaProxy.GetPredavanjaForZaposleni(LoggedIn);
+        }
 
     }
 }

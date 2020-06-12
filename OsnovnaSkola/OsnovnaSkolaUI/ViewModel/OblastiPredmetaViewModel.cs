@@ -15,6 +15,7 @@ namespace OsnovnaSkolaUI.ViewModel
         public Window Window { get; set; }
         public MyICommand ChangeOblastCommand { get; set; }
         public MyICommand DeleteOblastCommand { get; set; }
+        public MyICommand CreatePredavanjeCommand { get; set; }
         List<OblastIM> oblasti;
         public List<OblastIM> Oblasti
         {
@@ -30,18 +31,52 @@ namespace OsnovnaSkolaUI.ViewModel
         }
         public OblastIM SelectedOblast { get; set; }
         public PredmetIM SelectedPredmet { get; set; }
-        public OblastiPredmetaViewModel(PredmetIM predmet)
+        public string CreatingPredavanje { get; set; }
+        public string IzmenaOblasti { get; set; }
+        public OblastiPredmetaViewModel(PredmetIM predmet, bool creatingPredavanje)
         {
             Oblasti = Channel.Instance.PredmetiProxy.GetOblastiForPRedmet(predmet.Id_predmeta);
             ChangeOblastCommand = new MyICommand(OnChangeOblast);
             DeleteOblastCommand = new MyICommand(OnDeleteOblast);
             SelectedPredmet = predmet;
+            if (creatingPredavanje)
+            {
+                CreatingPredavanje = "Visible";
+                IzmenaOblasti = "Hidden";
+            }
+            else
+            {
+                CreatingPredavanje = "Hidden";
+                IzmenaOblasti = "Visible";
+            }
+            CreatePredavanjeCommand = new MyICommand(OnCreatePredavanje);
         }
 
         public void OnChangeOblast()
         {
-            new AddOblastWindow(SelectedPredmet, SelectedOblast).ShowDialog();
-            Window.Close();
+            if (SelectedOblast != null)
+            {
+                new AddOblastWindow(SelectedPredmet, SelectedOblast).ShowDialog();
+                Window.Close();
+            }
+            else
+            {
+                MessageBox.Show("Prvo izaberite oblast.", "Upozorenje!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        public void OnCreatePredavanje()
+        {
+            if (SelectedOblast != null)
+            {
+                new AddPRedavanjeWindow(SelectedOblast, null).ShowDialog();
+                Window.Close();
+            }
+            else
+            {
+                MessageBox.Show("Prvo izaberite oblast.", "Upozorenje!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
         }
 
         public void OnDeleteOblast()

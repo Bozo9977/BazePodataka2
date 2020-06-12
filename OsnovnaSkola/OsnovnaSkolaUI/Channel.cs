@@ -13,9 +13,9 @@ namespace OsnovnaSkolaUI
         public IZaposleni ZaposleniProxy { get; set; }
         public IUcenici UceniciProxy { get; set; }
         public IOdeljenja OdeljenjaProxy { get; set; }
-
         public IPredmeti PredmetiProxy { get; set; }
         public IOblast OblastiProxy { get; set; }
+        public IPredavanja PredavanjaProxy { get; set; }
 
 
         private static Channel instance;
@@ -55,6 +55,9 @@ namespace OsnovnaSkolaUI
 
             ChannelFactory<IOblast> channelFactoryOblast = new ChannelFactory<IOblast>(binding, new EndpointAddress("net.tcp://localhost:11001/IOblast"));
             OblastiProxy = channelFactoryOblast.CreateChannel();
+
+            ChannelFactory<IPredavanja> channelFactoryPredavanja = new ChannelFactory<IPredavanja>(binding, new EndpointAddress("net.tcp://localhost:11001/IPredavanja"));
+            PredavanjaProxy = channelFactoryPredavanja.CreateChannel();
         }
 
 

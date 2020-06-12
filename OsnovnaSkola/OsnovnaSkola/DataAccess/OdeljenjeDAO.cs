@@ -33,19 +33,11 @@ namespace OsnovnaSkola.DataAccess
                 {
                     Odeljenje o = db.Odeljenja.Include(n => n.NastavnikOdeljenjes).SingleOrDefault(x => x.Id_odeljenja == id);
                     List<NastavnikOdeljenje> listaN = new List<NastavnikOdeljenje>(o.NastavnikOdeljenjes.ToList());
-                    //List<Ucitelj> listaU = new List<Ucitelj>(o.Ucitelji);
-                    //foreach(var item in o.NastavnikOdeljenjes)
-                    //{
-                    //    db.Entry(item).State = EntityState.Deleted;
-                    //}
                     for(int i =0; i< listaN.Count; i++)
                     {
                         db.Entry(listaN[i]).State = EntityState.Deleted;
                     }
-                    //for(int i =0; i < listaU.Count; i++)
-                    //{
-                        
-                    //}
+                    
                     db.Entry(o).State = EntityState.Deleted;
                     db.SaveChanges();
                 }

@@ -9,19 +9,15 @@ using System.Threading.Tasks;
 namespace OsnovnaSkolaPL.Interfaces
 {
     [ServiceContract]
-    public interface IPredmeti
+    public interface IPredavanja
     {
         [OperationContract]
-        List<PredmetIM> GetPredmeti();
+        bool AddPredavanjeForZaposleni(/*ZaposleniIM zaposleni,*/ PredavanjeIM predavanje);
         [OperationContract]
-        bool AddPredmet(PredmetIM predmet);
+        List<PredavanjeIM> GetPredavanjaForZaposleni(ZaposleniIM zaposleni);
         [OperationContract]
-        List<OblastIM> GetOblastiForPRedmet(int id);
+        bool ChangePredavanje(PredavanjeIM predavanje);
         [OperationContract]
-        bool DeletePredmet(int id);
-        [OperationContract]
-        bool ChangePredmet(PredmetIM predmet);
-        [OperationContract]
-        List<PredmetIM> GetPredmetiForZaposleni(int id);
+        bool DeletePredavanje(PredavanjeIM predavanje);
     }
 }

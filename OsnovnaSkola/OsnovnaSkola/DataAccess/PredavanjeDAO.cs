@@ -68,5 +68,10 @@ namespace OsnovnaSkola.DataAccess
                 return new List<Predavanje>();
             }
         }
+
+        public override bool Delete(object id)
+        {
+            return base.Delete(id);
+        }
     }
 }
