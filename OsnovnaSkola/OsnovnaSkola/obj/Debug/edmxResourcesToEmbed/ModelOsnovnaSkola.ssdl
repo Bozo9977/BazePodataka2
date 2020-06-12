@@ -159,8 +159,8 @@
       <PropertyRef Name="Id_casa" />
     </Key>
     <Property Name="Id_casa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="pocetak" Type="time" Nullable="false" />
-    <Property Name="kraj" Type="time" Nullable="false" />
+    <Property Name="pocetak" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="kraj" Type="nvarchar(max)" Nullable="false" />
     <Property Name="datum" Type="datetime" Nullable="false" />
     <Property Name="OblastId_oblasti" Type="int" Nullable="true" />
     <Property Name="ZaposleniId_zaposlenog" Type="int" Nullable="false" />

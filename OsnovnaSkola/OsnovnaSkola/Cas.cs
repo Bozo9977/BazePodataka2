@@ -23,8 +23,8 @@ namespace OsnovnaSkola
         }
     
         public int Id_casa { get; set; }
-        public System.TimeSpan pocetak { get; set; }
-        public System.TimeSpan kraj { get; set; }
+        public string pocetak { get; set; }
+        public string kraj { get; set; }
         public System.DateTime datum { get; set; }
         public Nullable<int> OblastId_oblasti { get; set; }
         public int ZaposleniId_zaposlenog { get; set; }

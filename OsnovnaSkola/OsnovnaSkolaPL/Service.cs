@@ -17,6 +17,7 @@ namespace OsnovnaSkolaPL
         private static ServiceHost PredmetiServiceHost;
         private static ServiceHost OblastiServiceHost;
         private static ServiceHost PredavanjaServiceHost;
+        private static ServiceHost CasoviServiceHost;
 
         public Service()
         {
@@ -46,6 +47,9 @@ namespace OsnovnaSkolaPL
 
             PredavanjaServiceHost = new ServiceHost(typeof(PredavanjaService));
             PredavanjaServiceHost.AddServiceEndpoint(typeof(IPredavanja), binding, new Uri("net.tcp://localhost:11001/IPredavanja"));
+
+            CasoviServiceHost = new ServiceHost(typeof(CasService));
+            CasoviServiceHost.AddServiceEndpoint(typeof(ICasovi), binding, new Uri("net.tcp://localhost:11001/ICasovi"));
         }
 
         public void Open()
@@ -56,6 +60,7 @@ namespace OsnovnaSkolaPL
             PredmetiServiceHost.Open();
             OblastiServiceHost.Open();
             PredavanjaServiceHost.Open();
+            CasoviServiceHost.Open();
             Console.WriteLine("Service hosts open at: " + DateTime.Now);
         }
 
@@ -67,6 +72,7 @@ namespace OsnovnaSkolaPL
             PredmetiServiceHost.Close();
             OblastiServiceHost.Close();
             PredavanjaServiceHost.Close();
+            CasoviServiceHost.Close();
             Console.WriteLine("Service hosts closing at: " + DateTime.Now);
         }
     }

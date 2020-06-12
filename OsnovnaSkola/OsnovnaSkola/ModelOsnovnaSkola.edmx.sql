@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/10/2020 19:03:06
--- Generated from EDMX file: C:\Users\Bozo\Desktop\Baze Specifikacije\OsnovnaSkola\OsnovnaSkola\ModelOsnovnaSkola.edmx
+-- Date Created: 06/13/2020 00:25:06
+-- Generated from EDMX file: C:\Users\Bozo\Desktop\Baze Specifikacije\bazeProjekat\BazePodataka2\OsnovnaSkola\OsnovnaSkola\ModelOsnovnaSkola.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -76,6 +76,9 @@ IF OBJECT_ID(N'[dbo].[FK_OdeljenjeNastavnikOdeljenje]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_PredmetNastavnik]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Zaposlenici_Nastavnik] DROP CONSTRAINT [FK_PredmetNastavnik];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UciteljOdeljenje]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Odeljenja] DROP CONSTRAINT [FK_UciteljOdeljenje];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Nastavnik_inherits_Zaposleni]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Zaposlenici_Nastavnik] DROP CONSTRAINT [FK_Nastavnik_inherits_Zaposleni];
@@ -188,8 +191,8 @@ GO
 -- Creating table 'Cas'
 CREATE TABLE [dbo].[Cas] (
     [Id_casa] int IDENTITY(1,1) NOT NULL,
-    [pocetak] time  NOT NULL,
-    [kraj] time  NOT NULL,
+    [pocetak] nvarchar(max)  NOT NULL,
+    [kraj] nvarchar(max)  NOT NULL,
     [datum] datetime  NOT NULL,
     [OblastId_oblasti] int  NULL,
     [ZaposleniId_zaposlenog] int  NOT NULL

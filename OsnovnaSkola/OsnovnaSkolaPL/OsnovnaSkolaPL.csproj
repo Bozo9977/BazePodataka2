@@ -64,12 +64,14 @@
     <Compile Include="Helpers\BindableBase.cs" />
     <Compile Include="Helpers\MyICommand.cs" />
     <Compile Include="Helpers\ViewModelLocator.cs" />
+    <Compile Include="Interfaces\ICasovi.cs" />
     <Compile Include="Interfaces\IOblast.cs" />
     <Compile Include="Interfaces\IOdeljenja.cs" />
     <Compile Include="Interfaces\IPredavanja.cs" />
     <Compile Include="Interfaces\IPredmeti.cs" />
     <Compile Include="Interfaces\IUcenici.cs" />
     <Compile Include="Interfaces\IZaposleni.cs" />
+    <Compile Include="IntermediaryModels\CasIM.cs" />
     <Compile Include="IntermediaryModels\OblastIM.cs" />
     <Compile Include="IntermediaryModels\OdeljenjeIM.cs" />
     <Compile Include="IntermediaryModels\PredavanjeIM.cs" />
@@ -79,6 +81,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service.cs" />
+    <Compile Include="Services\CasService.cs" />
     <Compile Include="Services\OblastService.cs" />
     <Compile Include="Services\OdeljenjaService.cs" />
     <Compile Include="Services\PredavanjaService.cs" />

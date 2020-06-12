@@ -37,6 +37,8 @@ namespace OsnovnaSkolaUI.ViewModel
         public MyICommand CreatePredavanjeCommand { get; set; }
         public MyICommand ChangePredavanjeCommand { get; set; }
         public MyICommand DeletePredavanjeCommand { get; set; }
+        public MyICommand CreateCasCommand { get; set; }
+        public MyICommand ChangeCasCommand { get; set; }
 
         #endregion
 
@@ -89,6 +91,21 @@ namespace OsnovnaSkolaUI.ViewModel
                 OnPropertyChanged("Predavanja");
             }
         }
+
+        List<CasIM> casovi;
+        public List<CasIM> Casovi 
+        {
+            get
+            {
+                return casovi;
+            }
+            set
+            {
+                casovi = value;
+                OnPropertyChanged("Casovi");
+            }
+        }
+        public CasIM SelectedCas { get; set; }
         public PredavanjeIM SelectedPredavanje { get; set; }
         List<OdeljenjeIM> odeljenja { get; set; }
         public List<OdeljenjeIM> Odeljenja 
@@ -180,6 +197,9 @@ namespace OsnovnaSkolaUI.ViewModel
             CreatePredavanjeCommand = new MyICommand(OnCreatePredavanje);
             ChangePredavanjeCommand = new MyICommand(OnChangePredavanje);
             DeletePredavanjeCommand = new MyICommand(OnDeletePredavanje);
+
+            CreateCasCommand = new MyICommand(OnCreateCas);
+            ChangeCasCommand = new MyICommand(OnChangeCas);
         }
 
         public void OnDodajPredmet()
@@ -211,7 +231,7 @@ namespace OsnovnaSkolaUI.ViewModel
         {
             if (SelectedPredmet != null)
             {
-                new OblastiPredmetaWindow(SelectedPredmet, true).ShowDialog();
+                new OblastiPredmetaWindow(SelectedPredmet, true, false).ShowDialog();
                 OnZhangeZaposleni();
             }
             else
@@ -220,6 +240,24 @@ namespace OsnovnaSkolaUI.ViewModel
             }
         }
 
+        public void OnCreateCas()
+        {
+            if (SelectedPredmet != null)
+            {
+                new OblastiPredmetaWindow(SelectedPredmet, false, true).ShowDialog();
+                OnZhangeZaposleni();
+            }
+            else
+            {
+                MessageBox.Show("Prvo izaberite predmet.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        public void OnChangeCas()
+        {
+            new AddCasWindow(null, SelectedCas).ShowDialog();
+            OnZhangeZaposleni();
+        }
         public void OnChangePredavanje()
         {
             if (SelectedPredavanje != null)
@@ -402,7 +440,7 @@ namespace OsnovnaSkolaUI.ViewModel
 
         public void OnChangeOblast()
         {
-            new OblastiPredmetaWindow(SelectedPredmet, false).ShowDialog();
+            new OblastiPredmetaWindow(SelectedPredmet, false, false).ShowDialog();
             OnChange();
         }
         public void OnChange()
@@ -424,8 +462,9 @@ namespace OsnovnaSkolaUI.ViewModel
 
         public void OnZhangeZaposleni()
         {
-            Predmeti = Channel.Instance.PredmetiProxy.GetPredmetiForZaposleni(LoggedInZaposleni.Instance.Id_zaposlenog);
+            Predmeti = Channel.Instance.PredmetiProxy.GetPredmetiForZaposleni(LoggedIn.Id_zaposlenog);
             Predavanja = Channel.Instance.PredavanjaProxy.GetPredavanjaForZaposleni(LoggedIn);
+            Casovi = Channel.Instance.CasovyProxy.GetCasoviForZaposleni(LoggedIn.Id_zaposlenog);
         }
 
     }

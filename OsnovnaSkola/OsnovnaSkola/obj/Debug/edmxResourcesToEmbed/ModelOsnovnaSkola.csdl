@@ -167,8 +167,8 @@
       <PropertyRef Name="Id_casa" />
     </Key>
     <Property Name="Id_casa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="pocetak" Type="Time" Nullable="false" />
-    <Property Name="kraj" Type="Time" Nullable="false" />
+    <Property Name="pocetak" Type="String" Nullable="false" />
+    <Property Name="kraj" Type="String" Nullable="false" />
     <Property Name="datum" Type="DateTime" Nullable="false" />
     <NavigationProperty Name="Oblast" Relationship="ModelOsnovnaSkola.Predjena" FromRole="Cas" ToRole="Oblast" />
     <Property Name="OblastId_oblasti" Type="Int32" Nullable="true" />

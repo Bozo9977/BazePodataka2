@@ -33,22 +33,26 @@ namespace OsnovnaSkolaUI.ViewModel
         public PredmetIM SelectedPredmet { get; set; }
         public string CreatingPredavanje { get; set; }
         public string IzmenaOblasti { get; set; }
-        public OblastiPredmetaViewModel(PredmetIM predmet, bool creatingPredavanje)
+        bool CreatingCas { get; set; } = false;
+        public OblastiPredmetaViewModel(PredmetIM predmet, bool creatingPredavanje, bool creatingCas)
         {
             Oblasti = Channel.Instance.PredmetiProxy.GetOblastiForPRedmet(predmet.Id_predmeta);
             ChangeOblastCommand = new MyICommand(OnChangeOblast);
             DeleteOblastCommand = new MyICommand(OnDeleteOblast);
             SelectedPredmet = predmet;
-            if (creatingPredavanje)
+            if (creatingPredavanje || creatingCas)
             {
                 CreatingPredavanje = "Visible";
                 IzmenaOblasti = "Hidden";
+               
             }
             else
             {
                 CreatingPredavanje = "Hidden";
                 IzmenaOblasti = "Visible";
             }
+
+            CreatingCas = creatingCas;
             CreatePredavanjeCommand = new MyICommand(OnCreatePredavanje);
         }
 
@@ -67,9 +71,17 @@ namespace OsnovnaSkolaUI.ViewModel
 
         public void OnCreatePredavanje()
         {
+            
             if (SelectedOblast != null)
             {
-                new AddPRedavanjeWindow(SelectedOblast, null).ShowDialog();
+                if (CreatingCas)
+                {
+                    new AddCasWindow(SelectedOblast, null).ShowDialog();
+                }
+                else
+                {
+                    new AddPRedavanjeWindow(SelectedOblast, null).ShowDialog();
+                }
                 Window.Close();
             }
             else

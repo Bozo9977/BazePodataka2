@@ -164,8 +164,8 @@
       <PropertyRef Name="Id_casa" />
     </Key>
     <Property Name="Id_casa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="pocetak" Type="time" Nullable="false" />
-    <Property Name="kraj" Type="time" Nullable="false" />
+    <Property Name="pocetak" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="kraj" Type="nvarchar(max)" Nullable="false" />
     <Property Name="datum" Type="datetime" Nullable="false" />
     <Property Name="OblastId_oblasti" Type="int" Nullable="true" />
     <Property Name="ZaposleniId_zaposlenog" Type="int" Nullable="false" />
@@ -748,8 +748,8 @@
             <PropertyRef Name="Id_casa" />
           </Key>
           <Property Name="Id_casa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="pocetak" Type="Time" Nullable="false" />
-          <Property Name="kraj" Type="Time" Nullable="false" />
+          <Property Name="pocetak" Type="String" Nullable="false" />
+          <Property Name="kraj" Type="String" Nullable="false" />
           <Property Name="datum" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="Oblast" Relationship="ModelOsnovnaSkola.Predjena" FromRole="Cas" ToRole="Oblast" />
           <Property Name="OblastId_oblasti" Type="Int32" Nullable="true" />

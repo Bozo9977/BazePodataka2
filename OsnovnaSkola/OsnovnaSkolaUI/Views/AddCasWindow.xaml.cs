@@ -17,14 +17,14 @@ using System.Windows.Shapes;
 namespace OsnovnaSkolaUI.Views
 {
     /// <summary>
-    /// Interaction logic for OblastiPredmetaWindow.xaml
+    /// Interaction logic for AddCasWindow.xaml
     /// </summary>
-    public partial class OblastiPredmetaWindow : Window
+    public partial class AddCasWindow : Window
     {
-        public OblastiPredmetaWindow(PredmetIM predmet, bool creatingPredavanje, bool creatingCas)
+        public AddCasWindow(OblastIM oblast, CasIM cas)
         {
             InitializeComponent();
-            DataContext = new OblastiPredmetaViewModel(predmet, creatingPredavanje, creatingCas) { Window = this };
+            DataContext = new AddCasViewModel(oblast, cas) { Window = this };
         }
     }
 }

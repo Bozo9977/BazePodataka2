@@ -175,7 +175,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        
+
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
@@ -244,7 +244,7 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
-
+            <!--Predavanja-->
             <TabItem Header="Predavanja" Visibility="{Binding AuthorizeZaposleni}">
                 <DataGrid Visibility="{Binding AuthorizeZaposleni}" ItemsSource="{Binding Predavanja, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedItem="{Binding SelectedPredavanje}" ColumnWidth="*" AutoGenerateColumns="False" IsReadOnly="True">
                     <DataGrid.Columns>
@@ -289,30 +289,80 @@
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
 
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
 
-                        <!--<DataGridTemplateColumn Header="Dodaj oblast">
+            <!--Casovi-->
+            <TabItem Header="Casovi" Visibility="{Binding AuthorizeZaposleni}">
+                <DataGrid Visibility="{Binding AuthorizeZaposleni}" ItemsSource="{Binding Casovi, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedItem="{Binding SelectedCas}" ColumnWidth="*" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" TextBlock.TextAlignment="Center" Binding="{Binding Id_casa}" IsReadOnly="True">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap" />
+                                    <Setter Property="HorizontalAlignment" Value="Center" />
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn Header="Pcetak" TextBlock.TextAlignment="Center" Binding="{Binding pocetak}" IsReadOnly="True">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap" />
+                                    <Setter Property="HorizontalAlignment" Value="Center" />
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+
+                        <DataGridTextColumn Header="Kraj" TextBlock.TextAlignment="Center" Binding="{Binding kraj}" IsReadOnly="True">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap" />
+                                    <Setter Property="HorizontalAlignment" Value="Center" />
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn Header="Datum" TextBlock.TextAlignment="Center" Binding="{Binding datum}" IsReadOnly="True">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap" />
+                                    <Setter Property="HorizontalAlignment" Value="Center" />
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn Header="Oblast" TextBlock.TextAlignment="Center" Binding="{Binding OblastId_oblasti}" IsReadOnly="True">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap" />
+                                    <Setter Property="HorizontalAlignment" Value="Center" />
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTemplateColumn Header="Izmena/Brisanje">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}, Path=DataContext.AddOblastCommand}" CommandParameter="{Binding}">Nova oblast</Button>
+                                    <Button Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}, Path=DataContext.ChangeCasCommand}" CommandParameter="{Binding}">Izmeni/Obrisi</Button>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-
-                        <DataGridTemplateColumn Header="Izmeni oblast">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}, Path=DataContext.ChangeOblastCommand}" CommandParameter="{Binding}">Izmeni oblast</Button>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>-->
-
+                        
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
 
 
-
         </TabControl>
+
 
         <Button Content="NoviZaposleni" Command="{Binding AddZaposleniCommand}" Visibility="{Binding AuthorizeAdmin}" Background="Transparent"  FontFamily="Segoe UI" Foreground="#FFFBFB9F" BorderBrush="white" Width="181" FontSize="22" Margin="50,267,0,0" HorizontalAlignment="Left" Height="44" VerticalAlignment="Top" RenderTransformOrigin="0.47,5.777" />
         <Button Content="ObrisiZaposlenog" HorizontalAlignment="Left" Command="{Binding DeleteZaposleniCommand}" Visibility="{Binding AuthorizeAdmin}" Height="44" Margin="231,267,0,0" VerticalAlignment="Top" Width="206" Foreground="#FFFBFB9F" Background="Transparent"  FontFamily="Segoe UI" BorderBrush="White" FontSize="22" />
@@ -330,6 +380,9 @@
         <Button Content="DodajPredavanje" HorizontalAlignment="Left" Command="{Binding CreatePredavanjeCommand}" Visibility="{Binding IsAdmin}" Height="44" Margin="472,160,0,0" VerticalAlignment="Top" Width="206" Foreground="#FFFBFB9F" Background="Transparent"  FontFamily="Segoe UI" BorderBrush="White" FontSize="22" />
         <Button Content="IzmeniPredavanje" HorizontalAlignment="Left" Command="{Binding ChangePredavanjeCommand}" Visibility="{Binding IsAdmin}" Height="44" Margin="678,160,0,0" VerticalAlignment="Top" Width="206" Foreground="#FFFBFB9F" Background="Transparent"  FontFamily="Segoe UI" BorderBrush="White" FontSize="22" />
         <Button Content="ObrisiPredavanje" HorizontalAlignment="Left" Command="{Binding DeletePredavanjeCommand}" Visibility="{Binding IsAdmin}" Height="44" Margin="884,160,0,0" VerticalAlignment="Top" Width="206" Foreground="#FFFBFB9F" Background="Transparent"  FontFamily="Segoe UI" BorderBrush="White" FontSize="22" />
+        
+        
+        <Button Content="DodajCas" HorizontalAlignment="Left" Command="{Binding CreateCasCommand}" Visibility="{Binding IsAdmin}" Height="44" Margin="472,76,0,0" VerticalAlignment="Top" Width="122" Foreground="#FFFBFB9F" Background="Transparent"  FontFamily="Segoe UI" BorderBrush="White" FontSize="22" />
 
     </Grid>
 </Window>
