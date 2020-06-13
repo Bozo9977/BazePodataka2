@@ -96,3 +96,7 @@ C:\Users\Bozo\Desktop\Baze Specifikacije\bazeProjekat\BazePodataka2\OsnovnaSkola
 C:\Users\Bozo\Desktop\Baze Specifikacije\bazeProjekat\BazePodataka2\OsnovnaSkola\OsnovnaSkolaUI\obj\Debug\Views\AddPRedavanjeWindow.baml
 C:\Users\Bozo\Desktop\Baze Specifikacije\bazeProjekat\BazePodataka2\OsnovnaSkola\OsnovnaSkolaUI\obj\Debug\Views\AddCasWindow.g.cs
 C:\Users\Bozo\Desktop\Baze Specifikacije\bazeProjekat\BazePodataka2\OsnovnaSkola\OsnovnaSkolaUI\obj\Debug\Views\AddCasWindow.baml
+C:\Users\Bozo\Desktop\Baze Specifikacije\bazeProjekat\BazePodataka2\OsnovnaSkola\OsnovnaSkolaUI\obj\Debug\Views\AddDomaciWindow.g.cs
+C:\Users\Bozo\Desktop\Baze Specifikacije\bazeProjekat\BazePodataka2\OsnovnaSkola\OsnovnaSkolaUI\obj\Debug\Views\AddDomaciWindow.baml
+C:\Users\Bozo\Desktop\Baze Specifikacije\bazeProjekat\BazePodataka2\OsnovnaSkola\OsnovnaSkolaUI\obj\Debug\Views\AddKontrolniWindow.g.cs
+C:\Users\Bozo\Desktop\Baze Specifikacije\bazeProjekat\BazePodataka2\OsnovnaSkola\OsnovnaSkolaUI\obj\Debug\Views\AddKontrolniWindow.baml

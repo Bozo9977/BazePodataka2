@@ -72,6 +72,8 @@
     <Compile Include="Channel.cs" />
     <Compile Include="LoggedInZaposleni.cs" />
     <Compile Include="ViewModel\AddCasViewModel.cs" />
+    <Compile Include="ViewModel\AddDomaciViewModel.cs" />
+    <Compile Include="ViewModel\AddKontrolniViewModel.cs" />
     <Compile Include="ViewModel\AddOblastViewModel.cs" />
     <Compile Include="ViewModel\AddOdeljenjeViewModel.cs" />
     <Compile Include="ViewModel\AddPredavanjeViewModel.cs" />
@@ -86,6 +88,12 @@
     <Compile Include="ViewModel\ZaposleniPredmetViewModel.cs" />
     <Compile Include="Views\AddCasWindow.xaml.cs">
       <DependentUpon>AddCasWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddDomaciWindow.xaml.cs">
+      <DependentUpon>AddDomaciWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddKontrolniWindow.xaml.cs">
+      <DependentUpon>AddKontrolniWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AddOblastWindow.xaml.cs">
       <DependentUpon>AddOblastWindow.xaml</DependentUpon>
@@ -133,6 +141,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\AddCasWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddDomaciWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddKontrolniWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

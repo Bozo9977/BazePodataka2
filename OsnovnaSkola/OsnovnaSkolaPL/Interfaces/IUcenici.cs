@@ -19,5 +19,8 @@ namespace OsnovnaSkolaPL.Interfaces
         bool ChangeUcenik(UcenikIM ucenik);
         [OperationContract]
         bool DeleteUcenik(int id);
+
+        [OperationContract]
+        bool AddOdeljenjeUceniku(UcenikIM ucenik, OdeljenjeIM odeljenje);
     }
 }

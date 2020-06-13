@@ -14,6 +14,11 @@ namespace OsnovnaSkolaPL.Services
     {
         private static UcenikDAO dao = new UcenikDAO();
 
+        public bool AddOdeljenjeUceniku(UcenikIM ucenik, OdeljenjeIM odeljenje)
+        {
+            return dao.DodajOdeljenje(ucenik.Id_ucenika, odeljenje.Id_odeljenja);
+        }
+
         public bool AddUcenik(UcenikIM newUcenik)
         {
             Ucenik ucenik = new Ucenik()

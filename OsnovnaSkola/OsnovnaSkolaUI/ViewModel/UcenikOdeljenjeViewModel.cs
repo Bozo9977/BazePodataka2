@@ -40,17 +40,27 @@ namespace OsnovnaSkolaUI.ViewModel
             }
         }
 
+        public UcenikIM SelectedUcenik { get; set; }
         public UcenikOdeljenjeViewModel(UcenikIM ucenik)
         {
             Odeljenja = Channel.Instance.OdeljenjaProxy.GetOdeljenja();
             DodajOdeljenjeCommand = new MyICommand(OnDodajOdeljenje);
+            SelectedUcenik = ucenik;
         }
 
         public void OnDodajOdeljenje()
         {
             if (SelectedOdeljenje != null)
             {
+                if(Channel.Instance.UceniciProxy.AddOdeljenjeUceniku(SelectedUcenik, SelectedOdeljenje))
+                {
 
+                }
+                else
+                {
+                    MessageBox.Show("Greška pri dodavanju odeljenja.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                Window.Close();
             }
             else
             {

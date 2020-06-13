@@ -39,6 +39,9 @@ namespace OsnovnaSkolaUI.ViewModel
         public MyICommand DeletePredavanjeCommand { get; set; }
         public MyICommand CreateCasCommand { get; set; }
         public MyICommand ChangeCasCommand { get; set; }
+        public MyICommand CreateDomaciCommand { get; set; }
+        public MyICommand ChangeDomaciCommand { get; set; }
+        public MyICommand CreateKontrolniCommand { get; set; }
 
         #endregion
 
@@ -105,6 +108,21 @@ namespace OsnovnaSkolaUI.ViewModel
                 OnPropertyChanged("Casovi");
             }
         }
+
+        List<KontrolnaTackaIM> kontrolneTacke;
+        public List<KontrolnaTackaIM> KontrolneTacke 
+        {
+            get
+            {
+                return kontrolneTacke;
+            }
+            set
+            {
+                kontrolneTacke = value;
+                OnPropertyChanged("KontrolneTacke");
+            }
+        }
+        public KontrolnaTackaIM SelectedKT { get; set; }
         public CasIM SelectedCas { get; set; }
         public PredavanjeIM SelectedPredavanje { get; set; }
         List<OdeljenjeIM> odeljenja { get; set; }
@@ -200,11 +218,17 @@ namespace OsnovnaSkolaUI.ViewModel
 
             CreateCasCommand = new MyICommand(OnCreateCas);
             ChangeCasCommand = new MyICommand(OnChangeCas);
+
+            CreateDomaciCommand = new MyICommand(OnCreateDomaci);
+            ChangeDomaciCommand = new MyICommand(OnChangeDomaci);
+
+            CreateKontrolniCommand = new MyICommand(OnCreateKontrolni);
         }
 
         public void OnDodajPredmet()
         {
             new ZaposleniPredmetWindow(SelectedZaposleni).ShowDialog();
+            OnChange();
         }
 
         public void OnDeletePredmet()
@@ -253,6 +277,31 @@ namespace OsnovnaSkolaUI.ViewModel
             }
         }
 
+        public void OnCreateDomaci()
+        {
+            new AddDomaciWindow(null).ShowDialog();
+            OnZhangeZaposleni();
+        }
+        public void OnChangeDomaci()
+        {
+            if(SelectedKT.Domaci)
+            {
+                DomaciIM domaci = Channel.Instance.KTProxy.GetDomaciById(SelectedKT.Id_kontrolne_tacke);
+                new AddDomaciWindow(domaci).ShowDialog();
+            }
+            else if (!SelectedKT.Domaci)
+            {
+                KontrolniIM kontrolni = Channel.Instance.KTProxy.GetKontrolniById(SelectedKT.Id_kontrolne_tacke);
+                new AddKontrolniWindow(kontrolni).ShowDialog();
+            }
+            OnZhangeZaposleni();
+        }
+
+        public void OnCreateKontrolni()
+        {
+            new AddKontrolniWindow(null).ShowDialog();
+            OnZhangeZaposleni();
+        }
         public void OnChangeCas()
         {
             new AddCasWindow(null, SelectedCas).ShowDialog();
@@ -452,6 +501,7 @@ namespace OsnovnaSkolaUI.ViewModel
                 Ucenici = Channel.Instance.UceniciProxy.GetIcenici();
                 Odeljenja = Channel.Instance.OdeljenjaProxy.GetOdeljenja();
                 Predmeti = Channel.Instance.PredmetiProxy.GetPredmeti();
+                
             }
             catch (Exception e)
             {
@@ -465,6 +515,7 @@ namespace OsnovnaSkolaUI.ViewModel
             Predmeti = Channel.Instance.PredmetiProxy.GetPredmetiForZaposleni(LoggedIn.Id_zaposlenog);
             Predavanja = Channel.Instance.PredavanjaProxy.GetPredavanjaForZaposleni(LoggedIn);
             Casovi = Channel.Instance.CasovyProxy.GetCasoviForZaposleni(LoggedIn.Id_zaposlenog);
+            KontrolneTacke = Channel.Instance.KTProxy.GetKTForZaposleni(LoggedIn.Id_zaposlenog);
         }
 
     }
