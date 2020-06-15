@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace OsnovnaSkolaPL.Services
 {
@@ -61,12 +62,49 @@ namespace OsnovnaSkolaPL.Services
 
         public bool DeleteDomaci(int domaciID)
         {
-            return domaciDAO.Delete(domaciID);
+            try
+            {
+                using (var db = new ModelOsnovnaSkolaContainer())
+                {
+                    Domaci d = (Domaci)db.Kontrolna_tacka.SingleOrDefault(x => x.Id_kontrolne_tacke == domaciID);
+                    List<Radi> dRadi = db.Rade.Where(x => x.Kontrolna_tackaId_kontrolne_tacke == domaciID).ToList();
+
+                    foreach (var item in dRadi)
+                    {
+                        db.Entry(item).State = EntityState.Deleted;
+                    }
+                    db.SaveChanges();
+
+                    db.Entry(d).State = EntityState.Deleted;
+                    db.SaveChanges();
+                    return true;
+                }
+            }catch(Exception e)
+            {
+                Console.WriteLine("Message:\n" +e.Message + "\nTrace:\n\n"+e.StackTrace + "\nInner:\n\n"+e.InnerException);
+                return false;
+            }
+            
+            
         }
 
         public bool DeleteKontrolni(int kontrolniId)
         {
-            return kontrolniDAO.Delete(kontrolniId);
+            using(var db = new ModelOsnovnaSkolaContainer())
+            {
+                Kontrolni k = (Kontrolni)db.Kontrolna_tacka.SingleOrDefault(x => x.Id_kontrolne_tacke == kontrolniId);
+                List<Radi> kRadi = db.Rade.Where(x => x.Kontrolna_tackaId_kontrolne_tacke == kontrolniId).ToList();
+
+                foreach (var item in kRadi)
+                {
+                    db.Entry(item).State = EntityState.Deleted;
+                }
+                db.SaveChanges();
+
+                db.Entry(k).State = EntityState.Deleted;
+                db.SaveChanges();
+                return true;
+            }
         }
 
         public DomaciIM GetDomaciById(int domaciID)
@@ -96,25 +134,39 @@ namespace OsnovnaSkolaPL.Services
 
         public List<KontrolnaTackaIM> GetKTForZaposleni(int idZaposlenog)
         {
-            List<Kontrolni> listaK = kontrolniDAO.GetAll().Where(k => k.ZaposleniId_zaposlenog == idZaposlenog).ToList();
-            List<Domaci> listaD = domaciDAO.GetAll().Where(d => d.ZaposleniId_zaposlenog == idZaposlenog).ToList();
+
+            List<Domaci> domaci = domaciDAO.GetAll().ToList();
+            List<Kontrolni> kontrolni = kontrolniDAO.GetAll().ToList();
+            //using(var db = new ModelOsnovnaSkolaContainer())
+            //{
+            //    List<GetKontrolnuTackuAndRadeForZaposleni_Result> list = db.GetKontrolnuTackuAndRadeForZaposleni(idZaposlenog).ToList();
+            //    List<KontrolnaTackaIM> retVal = new List<KontrolnaTackaIM>();
+
+            //    bool isDomaci;
+
+            //    foreach (var item in list)
+            //    {
+            //        isDomaci = domaci.Any(x => x.Id_kontrolne_tacke == item.Id_kontrolne_tacke);
+            //        retVal.Add(new KontrolnaTackaIM() { zadatak = item.zadatak, Id_kontrolne_tacke = (int)item.Id_kontrolne_tacke, Domaci = isDomaci});
+            //    }
+            //    return retVal;
+            //}
 
             List<KontrolnaTackaIM> retVal = new List<KontrolnaTackaIM>();
 
-            foreach(var item in listaK)
+            foreach(var item in domaci)
             {
-                if (item != null)
-                    retVal.Add(new KontrolnaTackaIM() { Id_kontrolne_tacke = item.Id_kontrolne_tacke, datum = item.datum_odrzavanja, zadatak = item.zadatak, ZaposleniId_zaposlenog = item.ZaposleniId_zaposlenog , Domaci = false});
+                retVal.Add(new KontrolnaTackaIM() { Domaci = true, Id_kontrolne_tacke = item.Id_kontrolne_tacke, zadatak = item.zadatak, ZaposleniId_zaposlenog = item.ZaposleniId_zaposlenog });
             }
 
-            foreach(var item in listaD)
+            foreach(var item in kontrolni)
             {
-                if (item != null)
-                {
-                    retVal.Add(new KontrolnaTackaIM() { ZaposleniId_zaposlenog = item.ZaposleniId_zaposlenog, datum = item.dan_zadavanja, zadatak = item.zadatak, Id_kontrolne_tacke = item.Id_kontrolne_tacke , Domaci = true});
-                }
+                retVal.Add(new KontrolnaTackaIM() { Domaci = false, Id_kontrolne_tacke = item.Id_kontrolne_tacke, zadatak = item.zadatak, ZaposleniId_zaposlenog = item.ZaposleniId_zaposlenog });
             }
+
             return retVal;
         }
+
+
     }
 }

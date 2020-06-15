@@ -10,14 +10,11 @@
 namespace OsnovnaSkola
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Odrzava
+    public partial class GetKontrolnuTackuAndRadeForZaposleni_Result
     {
-        public int Kontrolna_tackaId_kontrolne_tacke { get; set; }
-        public int CasId_casa { get; set; }
-    
-        public virtual Kontrolna_tacka Kontrolna_tacka { get; set; }
-        public virtual Cas Cas { get; set; }
+        public Nullable<int> Id_kontrolne_tacke { get; set; }
+        public string zadatak { get; set; }
+        public Nullable<short> ocena { get; set; }
     }
 }

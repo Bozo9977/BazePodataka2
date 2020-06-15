@@ -96,8 +96,8 @@ namespace OsnovnaSkolaUI.ViewModel
         public string ButtonContent { get; set; }
 
 
-
-        public AddKontrolniViewModel(KontrolniIM kontrolni)
+        public OdeljenjeIM SelectedOdeljenje { get; set; }
+        public AddKontrolniViewModel(OdeljenjeIM odeljenje, KontrolniIM kontrolni)
         {
             if (kontrolni != null)
             {
@@ -121,7 +121,7 @@ namespace OsnovnaSkolaUI.ViewModel
             }
 
             NoviKontrolni.ZaposleniId_zaposlenog = LoggedInZaposleni.Instance.Id_zaposlenog;
-
+            SelectedOdeljenje = odeljenje;
             AddKontrolniCommand = new MyICommand(OnAddKontrolni);
             DeleteKontrolniCommand = new MyICommand(OnDeleteKontrolni);
         }
@@ -156,7 +156,14 @@ namespace OsnovnaSkolaUI.ViewModel
                 {
                     if (Channel.Instance.KTProxy.AddKontrolni(NoviKontrolni))
                     {
+                        if(Channel.Instance.ZaposleniProxy.DodeliKontrolneTackeUcenicima(LoggedInZaposleni.Instance.Id_zaposlenog, SelectedOdeljenje.Id_odeljenja, 0))
+                        {
 
+                        }
+                        else
+                        {
+                            MessageBox.Show("Greška pri dodeljivanju KT ucenicima.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
                     }
                     else
                     {

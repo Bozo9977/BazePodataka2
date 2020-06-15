@@ -18,6 +18,7 @@ namespace OsnovnaSkolaUI
         public IPredavanja PredavanjaProxy { get; set; }
         public ICasovi CasovyProxy { get; set; }
         public IKontrolneTacke KTProxy { get; set; }
+        public IRadovi RadoviProxy { get; set; }
 
 
         private static Channel instance;
@@ -66,6 +67,9 @@ namespace OsnovnaSkolaUI
 
             ChannelFactory<IKontrolneTacke> channelFactoryKT = new ChannelFactory<IKontrolneTacke>(binding, new EndpointAddress("net.tcp://localhost:11001/IKontrolneTacke"));
             KTProxy = channelFactoryKT.CreateChannel();
+
+            ChannelFactory<IRadovi> channelFactoryRadovi = new ChannelFactory<IRadovi>(binding, new EndpointAddress("net.tcp://localhost:11001/IRadovi"));
+            RadoviProxy = channelFactoryRadovi.CreateChannel();
         }
 
 

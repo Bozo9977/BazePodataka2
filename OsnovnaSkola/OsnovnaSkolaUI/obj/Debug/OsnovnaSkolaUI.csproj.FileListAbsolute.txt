@@ -100,3 +100,5 @@ C:\Users\Bozo\Desktop\Baze Specifikacije\bazeProjekat\BazePodataka2\OsnovnaSkola
 C:\Users\Bozo\Desktop\Baze Specifikacije\bazeProjekat\BazePodataka2\OsnovnaSkola\OsnovnaSkolaUI\obj\Debug\Views\AddDomaciWindow.baml
 C:\Users\Bozo\Desktop\Baze Specifikacije\bazeProjekat\BazePodataka2\OsnovnaSkola\OsnovnaSkolaUI\obj\Debug\Views\AddKontrolniWindow.g.cs
 C:\Users\Bozo\Desktop\Baze Specifikacije\bazeProjekat\BazePodataka2\OsnovnaSkola\OsnovnaSkolaUI\obj\Debug\Views\AddKontrolniWindow.baml
+C:\Users\Bozo\Desktop\Baze Specifikacije\bazeProjekat\BazePodataka2\OsnovnaSkola\OsnovnaSkolaUI\obj\Debug\Views\OceniRadoveWindow.g.cs
+C:\Users\Bozo\Desktop\Baze Specifikacije\bazeProjekat\BazePodataka2\OsnovnaSkola\OsnovnaSkolaUI\obj\Debug\Views\OceniRadoveWindow.baml

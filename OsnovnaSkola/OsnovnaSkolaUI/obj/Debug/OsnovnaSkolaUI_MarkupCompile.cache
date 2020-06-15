@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Bozo\Desktop\Baze Specifikacije\bazeProjekat\BazePodataka2\OsnovnaSkola\OsnovnaSkolaUI\App.xaml
-15-500636086
+16271200180
 
-36-1884803034
+38205701222
 20-1108963240
-MainWindow.xaml;Views\AddCasWindow.xaml;Views\AddDomaciWindow.xaml;Views\AddKontrolniWindow.xaml;Views\AddOblastWindow.xaml;Views\AddOdeljenjeWindow.xaml;Views\AddPRedavanjeWindow.xaml;Views\AddPredmetWindow.xaml;Views\AddRazredniWindow.xaml;Views\AddUcenikWindow.xaml;Views\AddZaposleniWindow.xaml;Views\LoginWindow.xaml;Views\OblastiPredmetaWindow.xaml;Views\UcenikOdeljenjeWindow.xaml;Views\ZaposleniPredmetWindow.xaml;
+MainWindow.xaml;Views\AddCasWindow.xaml;Views\AddDomaciWindow.xaml;Views\AddKontrolniWindow.xaml;Views\AddOblastWindow.xaml;Views\AddOdeljenjeWindow.xaml;Views\AddPRedavanjeWindow.xaml;Views\AddPredmetWindow.xaml;Views\AddRazredniWindow.xaml;Views\AddUcenikWindow.xaml;Views\AddZaposleniWindow.xaml;Views\LoginWindow.xaml;Views\OblastiPredmetaWindow.xaml;Views\OceniRadoveWindow.xaml;Views\UcenikOdeljenjeWindow.xaml;Views\ZaposleniPredmetWindow.xaml;
 
 False
 

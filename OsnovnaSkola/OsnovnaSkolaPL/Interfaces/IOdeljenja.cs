@@ -30,5 +30,7 @@ namespace OsnovnaSkolaPL.Interfaces
         bool ValidateUciteljExistance(int id);
         [OperationContract]
         List<OdeljenjeIM> GetOdeljenjeByRazred(short razred);
+        [OperationContract]
+        List<OdeljenjeIM> GetOdeljenjaForZaposleni(int zaposleniID);
     }
 }

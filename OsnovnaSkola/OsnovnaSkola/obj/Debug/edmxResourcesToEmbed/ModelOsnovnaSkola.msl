@@ -104,14 +104,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="KontrolnaTackaCasovi">
-      <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Odrzava)">
-        <MappingFragment StoreEntitySet="KontrolnaTackaCasovi">
-          <ScalarProperty Name="Kontrolna_tackaId_kontrolne_tacke" ColumnName="Kontrolna_tackaId_kontrolne_tacke" />
-          <ScalarProperty Name="CasId_casa" ColumnName="CasId_casa" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Imaju">
       <EntityTypeMapping TypeName="IsTypeOf(ModelOsnovnaSkola.Ima)">
         <MappingFragment StoreEntitySet="Imaju">
@@ -166,5 +158,25 @@
       </EndProperty>
       <Condition ColumnName="Ucitelj_Id_zaposlenog" IsNull="false" />
     </AssociationSetMapping>
+    <AssociationSetMapping Name="Kontrolna_tackaCas" TypeName="ModelOsnovnaSkola.Kontrolna_tackaCas" StoreEntitySet="Kontrolna_tackaCas">
+      <EndProperty Name="Kontrolna_tacka">
+        <ScalarProperty Name="Id_kontrolne_tacke" ColumnName="Kontrolna_tacka_Id_kontrolne_tacke" />
+      </EndProperty>
+      <EndProperty Name="Cas">
+        <ScalarProperty Name="Id_casa" ColumnName="Casovi_Id_casa" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="DodajKontrolnuTackuUceniku" FunctionName="ModelOsnovnaSkola.Store.DodajKontrolnuTackuUceniku" />
+    <FunctionImportMapping FunctionImportName="GetKontrolnuTackuAndRadeForZaposleniAndKontrolnaTacka" FunctionName="ModelOsnovnaSkola.Store.GetKontrolnuTackuAndRadeForZaposleniAndKontrolnaTacka">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ModelOsnovnaSkola.GetKontrolnuTackuAndRadeForZaposleniAndKontrolnaTacka_Result">
+          <ScalarProperty Name="Id_kontrolne_tacke" ColumnName="Id_kontrolne_tacke" />
+          <ScalarProperty Name="zadatak" ColumnName="zadatak" />
+          <ScalarProperty Name="ocena" ColumnName="ocena" />
+          <ScalarProperty Name="UcenikId_ucenika" ColumnName="UcenikId_ucenika" />
+          <ScalarProperty Name="ZaposleniId_zaposlenog" ColumnName="ZaposleniId_zaposlenog" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

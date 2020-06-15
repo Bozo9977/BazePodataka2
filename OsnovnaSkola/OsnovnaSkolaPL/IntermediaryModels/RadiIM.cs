@@ -8,15 +8,17 @@ using System.Threading.Tasks;
 namespace OsnovnaSkolaPL.IntermediaryModels
 {
     [DataContract]
-    public class KontrolnaTackaIM
+    public class RadiIM
     {
         [DataMember]
-        public int Id_kontrolne_tacke { get; set; }
+        public int Kontrolna_tackaId_kontrolne_tacke { get; set; }
         [DataMember]
-        public string zadatak { get; set; }
+        public int UcenikId_ucenika { get; set; }
         [DataMember]
         public int ZaposleniId_zaposlenog { get; set; }
         [DataMember]
-        public bool Domaci { get; set; }
+        public short ocena { get; set; }
+        [DataMember]
+        public string zadatak { get; set; }
     }
 }

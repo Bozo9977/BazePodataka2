@@ -21,10 +21,10 @@ namespace OsnovnaSkolaUI.Views
     /// </summary>
     public partial class AddDomaciWindow : Window
     {
-        public AddDomaciWindow(DomaciIM domaci)
+        public AddDomaciWindow(OdeljenjeIM odeljenje, DomaciIM domaci)
         {
             InitializeComponent();
-            DataContext = new AddDomaciViewModel(domaci) { Window = this };
+            DataContext = new AddDomaciViewModel(odeljenje, domaci) { Window = this };
         }
     }
 }

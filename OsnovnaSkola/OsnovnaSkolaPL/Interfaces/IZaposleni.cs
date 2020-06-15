@@ -26,5 +26,8 @@ namespace OsnovnaSkolaPL.Interfaces
         bool AddPredmetToZaposleni(ZaposleniIM zaposleni, PredmetIM predmet);
         [OperationContract]
         bool ValidatePredmetAdding(int nastavnikID);
+
+        [OperationContract]
+        bool DodeliKontrolneTackeUcenicima(int idZaposlenog, int idOdeljenja, short ocena);
     }
 }

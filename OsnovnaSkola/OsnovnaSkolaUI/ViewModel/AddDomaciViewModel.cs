@@ -94,7 +94,8 @@ namespace OsnovnaSkolaUI.ViewModel
         public string DeletionEnabled { get; set; }
 
         public string ButtonContent { get; set; }
-        public AddDomaciViewModel(DomaciIM domaci)
+        public OdeljenjeIM SelectedOdeljenje { get; set; }
+        public AddDomaciViewModel(OdeljenjeIM odeljenje, DomaciIM domaci)
         {
             if (domaci != null)
             {
@@ -119,7 +120,7 @@ namespace OsnovnaSkolaUI.ViewModel
             }
 
             NoviDomaci.ZaposleniId_zaposlenog = LoggedInZaposleni.Instance.Id_zaposlenog;
-            
+            SelectedOdeljenje = odeljenje;
             AddDomaciCommand = new MyICommand(OnAddDomaci);
             DeleteDomaciCommand = new MyICommand(OnDeleteDomaci);
         }
@@ -157,7 +158,7 @@ namespace OsnovnaSkolaUI.ViewModel
 
                     if (Channel.Instance.KTProxy.AddDomaci(NoviDomaci))
                     {
-
+                        Channel.Instance.ZaposleniProxy.DodeliKontrolneTackeUcenicima(LoggedInZaposleni.Instance.Id_zaposlenog, SelectedOdeljenje.Id_odeljenja, 0);
                     }
                     else
                     {

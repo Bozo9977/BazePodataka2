@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace OsnovnaSkolaPL.Services
 {
@@ -58,7 +59,137 @@ namespace OsnovnaSkolaPL.Services
 
         public bool DeleteZaposleni(int idZaposlenog)
         {
-            return dao.Delete(idZaposlenog);
+            using(var db = new ModelOsnovnaSkolaContainer())
+            {
+                Zaposleni z = db.Zaposlenici.Find(idZaposlenog);
+                if(z is Ucitelj)
+                {
+                    List<Cas> casovi = db.Cas.Where(x => x.ZaposleniId_zaposlenog == idZaposlenog).ToList();
+                   
+                    foreach(var c in casovi)
+                    {
+                        db.Entry(c).State = EntityState.Deleted;
+                    }
+                    db.SaveChanges();
+
+                    List<Predavanje> predavanja = db.Predavanja.Where(x => x.ZaposleniId_zaposlenog == idZaposlenog).ToList();
+
+                    foreach(var p in predavanja)
+                    {
+                        db.Entry(p).State = EntityState.Deleted;
+                    }
+                    db.SaveChanges();
+
+                    List<Radi> radovi = db.Rade.Where(x => x.ZaposleniId_zaposlenog == idZaposlenog).ToList();
+
+                    foreach (var item in radovi)
+                    {
+                        db.Entry(item).State = EntityState.Deleted;
+                    }
+                    db.SaveChanges();
+
+                    List<Kontrolna_tacka> kts = db.Kontrolna_tacka.Where(x => x.ZaposleniId_zaposlenog == idZaposlenog).ToList();
+
+                    foreach(var kt in kts)
+                    {
+                        db.Entry(kt).State = EntityState.Deleted;
+                    }
+                    db.SaveChanges();
+
+                    List<Prisustvo> prisustva = db.Prisustva.Where(x => x.ZaposleniId_zaposlenog == idZaposlenog).ToList();
+
+                    foreach(var item in prisustva)
+                    {
+                        db.Entry(item).State = EntityState.Deleted;
+                    }
+                    db.SaveChanges();
+
+                    
+
+                    db.Entry(z).State = EntityState.Deleted;
+                    db.SaveChanges();
+
+                    return true;
+                }
+                else
+                {
+                    List<NastavnikOdeljenje> no = db.NastavnikOdeljenjes.Where(x => x.NastavnikId_zaposlenog == idZaposlenog).ToList();
+
+                    foreach(var item in no)
+                    {
+                        db.Entry(item).State = EntityState.Deleted;
+                    }
+                    db.SaveChanges();
+
+                    List<Cas> casovi = db.Cas.Where(x => x.ZaposleniId_zaposlenog == idZaposlenog).ToList();
+                    foreach (var c in casovi)
+                    {
+                        db.Entry(c).State = EntityState.Deleted;
+                    }
+                    db.SaveChanges();
+
+                    List<Predavanje> predavanja = db.Predavanja.Where(x => x.ZaposleniId_zaposlenog == idZaposlenog).ToList();
+
+                    foreach (var p in predavanja)
+                    {
+                        db.Entry(p).State = EntityState.Deleted;
+                    }
+                    db.SaveChanges();
+
+                    List<Radi> radovi = db.Rade.Where(x => x.ZaposleniId_zaposlenog == idZaposlenog).ToList();
+                    foreach (var item in radovi)
+                    {
+                        db.Entry(item).State = EntityState.Deleted;
+                    }
+                    db.SaveChanges();
+
+                    List<Kontrolna_tacka> kts = db.Kontrolna_tacka.Where(x => x.ZaposleniId_zaposlenog == idZaposlenog).ToList();
+                    foreach (var kt in kts)
+                    {
+                        db.Entry(kt).State = EntityState.Deleted;
+                    }
+                    db.SaveChanges();
+
+                    List<Prisustvo> prisustva = db.Prisustva.Where(x => x.ZaposleniId_zaposlenog == idZaposlenog).ToList();
+
+                    foreach (var item in prisustva)
+                    {
+                        db.Entry(item).State = EntityState.Deleted;
+                    }
+                    db.SaveChanges();
+
+                    
+
+                   
+
+                    db.Entry(z).State = EntityState.Deleted;
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+        }
+
+        public bool DodeliKontrolneTackeUcenicima(int idZaposlenog, int idOdeljenja, short ocena)
+        {
+            using(var db = new ModelOsnovnaSkolaContainer())
+            {
+                Odeljenje o = db.Odeljenja.Include(s => s.Ucenici).SingleOrDefault(x => x.Id_odeljenja == idOdeljenja);
+                Kontrolna_tacka k = db.Kontrolna_tacka.ToList().LastOrDefault();
+                int idKontrolneTacke = k.Id_kontrolne_tacke;
+
+                if (o != null)
+                {
+                    foreach(var item in o.Ucenici)
+                    {
+                        dao.DodajKontrolnuTackuUcenicima(item.Id_ucenika, idZaposlenog, idKontrolneTacke, ocena);
+                    }
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
 
         public List<ZaposleniIM> GetZaposleni()

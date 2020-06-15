@@ -42,6 +42,7 @@ namespace OsnovnaSkolaUI.ViewModel
         public MyICommand CreateDomaciCommand { get; set; }
         public MyICommand ChangeDomaciCommand { get; set; }
         public MyICommand CreateKontrolniCommand { get; set; }
+        public MyICommand OceniCommand { get; set; }
 
         #endregion
 
@@ -168,6 +169,19 @@ namespace OsnovnaSkolaUI.ViewModel
             }
         }
 
+        Boolean admin;
+        public Boolean Admin
+        {
+            get 
+            {
+                return admin;
+            }
+            set
+            {
+                admin = value;
+                OnPropertyChanged("Admin");
+            }
+        }
         #endregion
 
         public MainViewModel()
@@ -175,6 +189,7 @@ namespace OsnovnaSkolaUI.ViewModel
             LoggedIn = LoggedInZaposleni.Instance;
             if(LoggedInZaposleni.Instance.ime != "admin")
             {
+                Admin = false;
                 IsAdmin = "Visible";
                 AuthorizeAdmin = "Hidden";
                 AuthorizeZaposleni = "Visible";
@@ -182,6 +197,7 @@ namespace OsnovnaSkolaUI.ViewModel
             }
             else
             {
+                Admin = true;
                 IsAdmin = "Hidden";
                 AuthorizeAdmin = "Visible";
                 AuthorizeZaposleni = "Hidden";
@@ -223,6 +239,24 @@ namespace OsnovnaSkolaUI.ViewModel
             ChangeDomaciCommand = new MyICommand(OnChangeDomaci);
 
             CreateKontrolniCommand = new MyICommand(OnCreateKontrolni);
+            
+            
+            OceniCommand = new MyICommand(OnOceniRadove);
+
+
+        }
+
+        public void OnOceniRadove()
+        {
+            if(SelectedKT != null)
+            {
+                new OceniRadoveWindow(SelectedKT.Id_kontrolne_tacke).ShowDialog();
+                OnZhangeZaposleni();
+            }
+            else
+            {
+                MessageBox.Show("Prvo izaberite kontrolnu tačku.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         public void OnDodajPredmet()
@@ -279,28 +313,43 @@ namespace OsnovnaSkolaUI.ViewModel
 
         public void OnCreateDomaci()
         {
-            new AddDomaciWindow(null).ShowDialog();
-            OnZhangeZaposleni();
+            if(SelectedOdeljenje != null)
+            {
+                new AddDomaciWindow(SelectedOdeljenje, null).ShowDialog();
+                OnZhangeZaposleni();
+            }
+            else
+            {
+                MessageBox.Show("Prvo izaberite odeljenje.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            
         }
         public void OnChangeDomaci()
         {
             if(SelectedKT.Domaci)
             {
                 DomaciIM domaci = Channel.Instance.KTProxy.GetDomaciById(SelectedKT.Id_kontrolne_tacke);
-                new AddDomaciWindow(domaci).ShowDialog();
+                new AddDomaciWindow(null, domaci).ShowDialog();
             }
             else if (!SelectedKT.Domaci)
             {
                 KontrolniIM kontrolni = Channel.Instance.KTProxy.GetKontrolniById(SelectedKT.Id_kontrolne_tacke);
-                new AddKontrolniWindow(kontrolni).ShowDialog();
+                new AddKontrolniWindow(null, kontrolni).ShowDialog();
             }
             OnZhangeZaposleni();
         }
 
         public void OnCreateKontrolni()
         {
-            new AddKontrolniWindow(null).ShowDialog();
-            OnZhangeZaposleni();
+            if(SelectedOdeljenje != null)
+            {
+                new AddKontrolniWindow(SelectedOdeljenje, null).ShowDialog();
+                OnZhangeZaposleni();
+            }
+            else
+            {
+                MessageBox.Show("Prvo izaberite odeljenje.", "Greška!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
         public void OnChangeCas()
         {
@@ -516,6 +565,7 @@ namespace OsnovnaSkolaUI.ViewModel
             Predavanja = Channel.Instance.PredavanjaProxy.GetPredavanjaForZaposleni(LoggedIn);
             Casovi = Channel.Instance.CasovyProxy.GetCasoviForZaposleni(LoggedIn.Id_zaposlenog);
             KontrolneTacke = Channel.Instance.KTProxy.GetKTForZaposleni(LoggedIn.Id_zaposlenog);
+            Odeljenja = Channel.Instance.OdeljenjaProxy.GetOdeljenjaForZaposleni(LoggedIn.Id_zaposlenog);
         }
 
     }

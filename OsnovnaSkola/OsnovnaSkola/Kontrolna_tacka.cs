@@ -17,8 +17,8 @@ namespace OsnovnaSkola
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Kontrolna_tacka()
         {
-            this.Odrzavane = new HashSet<Odrzava>();
             this.Rade = new HashSet<Radi>();
+            this.Casovi = new HashSet<Cas>();
         }
     
         public int Id_kontrolne_tacke { get; set; }
@@ -27,8 +27,8 @@ namespace OsnovnaSkola
     
         public virtual Zaposleni Zaposleni { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Odrzava> Odrzavane { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Radi> Rade { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cas> Casovi { get; set; }
     }
 }

@@ -31,7 +31,17 @@ namespace OsnovnaSkola.DataAccess
             {
                 using (var db = new ModelOsnovnaSkolaContainer())
                 {
-                    Odeljenje o = db.Odeljenja.Include(n => n.NastavnikOdeljenjes).SingleOrDefault(x => x.Id_odeljenja == id);
+                    Odeljenje o = db.Odeljenja.Include(n => n.NastavnikOdeljenjes).Include(u=>u.Ucenici).SingleOrDefault(x => x.Id_odeljenja == id);
+
+                    
+
+                    List<Ucenik> ucenici = new List<Ucenik>(o.Ucenici.ToList());
+                    foreach(var item in ucenici)
+                    {
+                        db.Entry(item).State = EntityState.Deleted;
+                    }
+                    db.SaveChanges();
+                    
                     List<NastavnikOdeljenje> listaN = new List<NastavnikOdeljenje>(o.NastavnikOdeljenjes.ToList());
                     for(int i =0; i< listaN.Count; i++)
                     {
@@ -50,6 +60,8 @@ namespace OsnovnaSkola.DataAccess
             
         }
 
+        //problematicna greska pri dodavanju nastavnika jer proverava samo da li je ucitelj postojeci
+        //napraviti razliku preko dodatnog param da li je dodela RAzrednog ili je dodavanje Nastavnika/ucitelja
         public bool ValidateUciteljExistance(int id)
         {
             using(var db = new ModelOsnovnaSkolaContainer())
@@ -61,6 +73,33 @@ namespace OsnovnaSkola.DataAccess
                     return false;
             }
             
+        }
+
+
+
+        public List<Odeljenje> GetOdeljenjaForZaposleni(int zaposleniID)
+        {
+            using (var db = new ModelOsnovnaSkolaContainer())
+            {
+                Zaposleni z = db.Zaposlenici.Find(zaposleniID);
+                List<Odeljenje> retVal = new List<Odeljenje>();
+
+                if (z is Ucitelj)
+                {
+                    retVal.Add(db.Odeljenja.SingleOrDefault(x => x.Ucitelj == (z as Ucitelj)));
+                }
+                else
+                {
+                    Nastavnik n = (z as Nastavnik);
+                    foreach (var item in n.NastavnikOdeljenjes)
+                    {
+                        retVal.Add(db.Odeljenja.Include(u=>u.Ucitelj).Include(r=>r.NastavnikOdeljenjes.Select(x=>x.Nastavnik)).SingleOrDefault(p=>p.Id_odeljenja==item.OdeljenjeId_odeljenja));
+                    }
+                }
+
+                return retVal;
+
+            }
         }
     }
 }

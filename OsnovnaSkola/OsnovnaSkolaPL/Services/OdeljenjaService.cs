@@ -48,6 +48,8 @@ namespace OsnovnaSkolaPL.Services
             }
         }
 
+       
+
         public bool AddNastavnik(OdeljenjeIM odeljenje, ZaposleniIM zaposleni)
         {
             using(var db = new ModelOsnovnaSkolaContainer())
@@ -94,7 +96,12 @@ namespace OsnovnaSkolaPL.Services
                 if(item.Ucitelj != null)
                     retVal.Add(new OdeljenjeIM() { razred = item.razred, Id_odeljenja = item.Id_odeljenja, Razredni = item.Ucitelj.ime});
                 else if(item.NastavnikOdeljenjes.Count != 0)
-                    retVal.Add(new OdeljenjeIM() { razred = item.razred, Id_odeljenja = item.Id_odeljenja, Razredni = item.NastavnikOdeljenjes.ToList().Find(n=>n.Razredni==true).Nastavnik.ime });
+                {
+                    if(item.NastavnikOdeljenjes.Any(x=>x.Razredni == true))
+                        retVal.Add(new OdeljenjeIM() { razred = item.razred, Id_odeljenja = item.Id_odeljenja, Razredni = item.NastavnikOdeljenjes.ToList().Find(n => n.Razredni == true).Nastavnik.ime });
+                    else
+                        retVal.Add(new OdeljenjeIM() { razred = item.razred, Id_odeljenja = item.Id_odeljenja });
+                }
                 else
                     retVal.Add(new OdeljenjeIM() { razred = item.razred, Id_odeljenja = item.Id_odeljenja, Razredni = ""});
             }
@@ -124,6 +131,24 @@ namespace OsnovnaSkolaPL.Services
                 else
                     retVal.Add(new OdeljenjeIM() { razred = item.razred, Id_odeljenja = item.Id_odeljenja, Razredni = "" });
             }
+            return retVal;
+        }
+
+        public List<OdeljenjeIM> GetOdeljenjaForZaposleni(int zaposleniID)
+        {
+            List<Odeljenje> lista = dao.GetOdeljenjaForZaposleni(zaposleniID);
+            List<OdeljenjeIM> retVal = new List<OdeljenjeIM>();
+
+            foreach (var item in lista)
+            {
+                if (item.Ucitelj != null)
+                    retVal.Add(new OdeljenjeIM() { razred = item.razred, Id_odeljenja = item.Id_odeljenja, Razredni = item.Ucitelj.ime });
+                else if (item.NastavnikOdeljenjes.Count != 0)
+                    retVal.Add(new OdeljenjeIM() { razred = item.razred, Id_odeljenja = item.Id_odeljenja, Razredni = item.NastavnikOdeljenjes.ToList().Find(n => n.Razredni == true).Nastavnik.ime });
+                else
+                    retVal.Add(new OdeljenjeIM() { razred = item.razred, Id_odeljenja = item.Id_odeljenja, Razredni = "" });
+            }
+
             return retVal;
         }
     }

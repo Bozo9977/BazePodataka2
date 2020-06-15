@@ -76,6 +76,7 @@ namespace OsnovnaSkolaUI.ViewModel
             {
                 if (CreatingCas)
                 {
+                    //new UcenikOdeljenjeWindow(Se)
                     new AddCasWindow(SelectedOblast, null).ShowDialog();
                 }
                 else

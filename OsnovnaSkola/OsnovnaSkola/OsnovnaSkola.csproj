@@ -69,11 +69,24 @@
     <Compile Include="DataAccess\OdeljenjeDAO.cs" />
     <Compile Include="DataAccess\PredavanjeDAO.cs" />
     <Compile Include="DataAccess\PredmetDAO.cs" />
+    <Compile Include="DataAccess\RadiDAO.cs" />
     <Compile Include="DataAccess\RepoAccess.cs" />
     <Compile Include="DataAccess\UcenikDAO.cs" />
     <Compile Include="DataAccess\UciteljDAO.cs" />
     <Compile Include="DataAccess\ZaposleniciDAO.cs" />
     <Compile Include="Domaci.cs">
+      <DependentUpon>ModelOsnovnaSkola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetKontrolnuTackuAndRadeForZaposleniAndKontrolnaTacka_Result.cs">
+      <DependentUpon>ModelOsnovnaSkola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetKontrolnuTackuAndRadeForZaposleniAndKT_Result.cs">
+      <DependentUpon>ModelOsnovnaSkola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetKontrolnuTackuAndRadeForZaposleni_Result.cs">
+      <DependentUpon>ModelOsnovnaSkola.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetKontrolnuTackuAndRade_Result.cs">
       <DependentUpon>ModelOsnovnaSkola.tt</DependentUpon>
     </Compile>
     <Compile Include="Ima.cs">
@@ -110,9 +123,6 @@
       <DependentUpon>ModelOsnovnaSkola.tt</DependentUpon>
     </Compile>
     <Compile Include="Odeljenje.cs">
-      <DependentUpon>ModelOsnovnaSkola.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Odrzava.cs">
       <DependentUpon>ModelOsnovnaSkola.tt</DependentUpon>
     </Compile>
     <Compile Include="Predavanje.cs">

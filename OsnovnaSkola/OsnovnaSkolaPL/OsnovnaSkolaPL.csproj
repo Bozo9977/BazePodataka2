@@ -70,6 +70,7 @@
     <Compile Include="Interfaces\IOdeljenja.cs" />
     <Compile Include="Interfaces\IPredavanja.cs" />
     <Compile Include="Interfaces\IPredmeti.cs" />
+    <Compile Include="Interfaces\IRadovi.cs" />
     <Compile Include="Interfaces\IUcenici.cs" />
     <Compile Include="Interfaces\IZaposleni.cs" />
     <Compile Include="IntermediaryModels\CasIM.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="IntermediaryModels\OdeljenjeIM.cs" />
     <Compile Include="IntermediaryModels\PredavanjeIM.cs" />
     <Compile Include="IntermediaryModels\PredmetIM.cs" />
+    <Compile Include="IntermediaryModels\RadiIM.cs" />
     <Compile Include="IntermediaryModels\UcenikIM.cs" />
     <Compile Include="IntermediaryModels\ZaposleniIM.cs" />
     <Compile Include="Program.cs" />
@@ -91,6 +93,7 @@
     <Compile Include="Services\OdeljenjaService.cs" />
     <Compile Include="Services\PredavanjaService.cs" />
     <Compile Include="Services\PredmetiService.cs" />
+    <Compile Include="Services\RadoviService.cs" />
     <Compile Include="Services\UceniciService.cs" />
     <Compile Include="Services\ZaposleniService.cs" />
   </ItemGroup>

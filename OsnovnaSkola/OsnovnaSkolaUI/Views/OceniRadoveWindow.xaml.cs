@@ -1,5 +1,4 @@
-﻿using OsnovnaSkolaPL.IntermediaryModels;
-using OsnovnaSkolaUI.ViewModel;
+﻿using OsnovnaSkolaUI.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,14 +16,14 @@ using System.Windows.Shapes;
 namespace OsnovnaSkolaUI.Views
 {
     /// <summary>
-    /// Interaction logic for AddKontrolniWindow.xaml
+    /// Interaction logic for OceniRadoveWindow.xaml
     /// </summary>
-    public partial class AddKontrolniWindow : Window
+    public partial class OceniRadoveWindow : Window
     {
-        public AddKontrolniWindow(OdeljenjeIM odeljenje, KontrolniIM kontrolni)
+        public OceniRadoveWindow(int idKT)
         {
             InitializeComponent();
-            DataContext = new AddKontrolniViewModel(odeljenje, kontrolni) { Window = this };
+            DataContext = new OceniRadoveViewModel(idKT) { Window = this };
         }
     }
 }

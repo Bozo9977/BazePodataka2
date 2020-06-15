@@ -1,0 +1,71 @@
+﻿<Window x:Class="OsnovnaSkolaUI.Views.OceniRadoveWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OsnovnaSkolaUI.Views"
+        mc:Ignorable="d"
+        Title="Oceni Radove" Height="450" Width="711.5" WindowStartupLocation="CenterScreen">
+    <Grid Background="Black">
+        <DataGrid  ItemsSource="{Binding Radovi, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" CanUserAddRows="False"  ColumnWidth="*" AutoGenerateColumns="False"  Margin="0,0,0,97">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Kontrolna tacka:" TextBlock.TextAlignment="Center" Binding="{Binding Kontrolna_tackaId_kontrolne_tacke}" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap" />
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="Ucenik" TextBlock.TextAlignment="Center" Binding="{Binding UcenikId_ucenika}" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap" />
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+
+                <DataGridTextColumn Header="Zapsleni" TextBlock.TextAlignment="Center" Binding="{Binding ZaposleniId_zaposlenog}" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap" />
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="Ocena" TextBlock.TextAlignment="Center" Binding="{Binding ocena}" >
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap" />
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="Zadatak" TextBlock.TextAlignment="Center" Binding="{Binding zadatak}" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap" />
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <!--<Button Visibility="{Binding IzmenaOblasti}" Content="Izmeni" Command="{Binding ChangeOblastCommand}" FontSize="18" Background="Transparent" Foreground="Gold" Margin="185,356,365,0" VerticalAlignment="Top" Height="40"/>-->
+        <!--<Button Visibility="{Binding IzmenaOblasti}" Content="Obrisi" Command="{Binding DeleteOblastCommand}" FontSize="18" Background="Transparent" Foreground="Gold" Margin="344,356,206,0" VerticalAlignment="Top" Height="40"/>-->
+        <Button  Content="Oceni" Command="{Binding OceniCommand}" FontSize="18" Background="Transparent" Foreground="Gold" Margin="271,356,279,0" VerticalAlignment="Top" Height="40"/>
+
+
+    </Grid>
+</Window>
